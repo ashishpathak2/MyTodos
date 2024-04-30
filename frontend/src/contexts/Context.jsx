@@ -40,7 +40,7 @@ export default function Context({ children }) {
 
   useEffect(() => {
 
-    if (loggedInUser) {
+    if (loggedInUser && loggedInUser.length > 0) {
       getTodo();
     }
 
