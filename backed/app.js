@@ -9,9 +9,9 @@ var bodyParser = require("body-parser")
 
 
 
-var indexRouter = require('../routes/index');
-var UserRouter = require("../routes/users")
-var usersRouter = require('../collections/usersModel');
+var indexRouter = require('./routes/index');
+var UserRouter = require("./routes/users")
+var usersRouter = require('./collections/usersModel');
 const passport = require('passport');
 
 var app = express();
