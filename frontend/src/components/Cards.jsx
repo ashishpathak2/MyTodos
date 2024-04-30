@@ -6,10 +6,10 @@ import { ImCheckboxUnchecked } from "react-icons/im";
 import { ImCheckboxChecked } from "react-icons/im";
 // import Countdown from 'react-countdown-simple';
 import { RxUpdate } from "react-icons/rx";
-
 import axios from 'axios';
 import { stateData } from '../contexts/Context';
 import CountdownTimer from './CountdownTimer ';
+import { baseUrl } from '../utils';
 
 
 
@@ -42,7 +42,7 @@ function Cards({ data, reference }) {
 
     const deleteTodo = (id) => {
 
-        axios.delete(`http://localhost:3000/deletetodo/${id}`).
+        axios.delete(`${baseUrl}/deletetodo/${id}`).
             then((res) => {
                 console.log(res.data);
             }).catch((error) => {
@@ -64,7 +64,7 @@ function Cards({ data, reference }) {
     }, [data.timeRemaining])
 
     const EditTodo = (id,data) => {
-        axios.put(`http://localhost:3000/edittodo/${id}`, data)
+        axios.put(`${baseUrl}/edittodo/${id}`, data)
             .then((res) => {
                 console.log(res.data);
             }),

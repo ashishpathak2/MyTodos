@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { IoMdAdd } from "react-icons/io";
 import { stateData } from '../contexts/Context';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { baseUrl } from '../utils';
+
 
 
 
@@ -18,7 +20,7 @@ const Addform = () => {
   const { getTodo } = stateData();
   
   const postTodo = (data) => {
-    axios.post("http://localhost:3000/addtodo", data)
+    axios.post(`${baseUrl}/addtodo`, data)
       .then((res) => {
         if (res.data === "please login") toast.dark("Please login",{
           position: "top-center"
@@ -49,7 +51,7 @@ const handleSubmit = (e) => {
   return (
     <div className="">
 
-      <div className='w-14 h-14 absolute left-0 fixed hover:scale-125 hover:transition ease-in-out bg-zinc-900 rounded-[50px] hover:bg-blue-600 mt-5 ml-5 flex justify-center  focus:outline-none focus:bg-blue-600'>
+      <div className='w-14 h-14 absolute left-0  hover:scale-125 hover:transition ease-in-out bg-zinc-900 rounded-[50px] hover:bg-blue-600 mt-5 ml-5 flex justify-center  focus:outline-none focus:bg-blue-600'>
         <button onClick={e => setIsOpen(true)}
           className="text-white"><IoMdAdd /></button>
       </div>

@@ -1,7 +1,6 @@
 import React, { useState, createContext, useContext, useEffect } from 'react'
 import axios from 'axios';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { baseUrl } from '../utils';
 
 
 
@@ -29,7 +28,7 @@ export default function Context({ children }) {
   //Fetching Data from database of all products
   axios.defaults.withCredentials = true;
   const getTodo = () => {
-    axios.get('http://localhost:3000/todo')
+    axios.get(`${baseUrl}/todo`)
       .then((res) => {
         setTodos(res.data)
       }),
