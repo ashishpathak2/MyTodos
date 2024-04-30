@@ -21,14 +21,16 @@ app.set('views', path.join(__dirname, 'views'));
 app.use('/', indexRouter);
 app.use('/users', UserRouter);
 
-app.set('view engine', 'ejs');
-app.use(express.json());
-app.use(bodyParser.json());
 app.use(cors({
   origin:["https://my-todos-1koj.vercel.app"],
   methods:["GET","POST","DELETE","PUT"],
   credentials:true
 }));
+
+app.set('view engine', 'ejs');
+app.use(express.json());
+app.use(bodyParser.json());
+
 app.use(cookieParser());
 app.use(Session({
   resave:false    ,
