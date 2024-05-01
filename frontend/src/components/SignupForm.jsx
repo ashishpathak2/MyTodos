@@ -72,7 +72,7 @@ const Addform = ({ }) => {
   const registerUser = (data) => {
 
     if (formType) {
-      axios.defaults.withCredentials = true;
+      // axios.defaults.withCredentials = true;
       axios.post(`${baseUrl}/users/register`, data)
         .then((res) => {
 
