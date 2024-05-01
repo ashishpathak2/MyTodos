@@ -12,7 +12,7 @@ router.get('/',function (req, res, next) {
 
 
 router.get('/todo', async function (req, res) {
-
+  res.header("Access-Control-Allow-Origin", "*");
   await todoItems.find({CreatedByuserId : req.session.passport.user._id}).
     then((result) => {
       res.send(result).status(200)
