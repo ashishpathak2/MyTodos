@@ -15,17 +15,18 @@ var usersRouter = require('./collections/usersModel');
 const passport = require('passport');
 
 var app = express();
+app.use(cors({
+  origin:["https://my-todos-1koj.vercel.app"],
+  methods:["GET","POST","DELETE","PUT"],
+  credentials:true
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.use('/', indexRouter);
 app.use('/users', UserRouter);
 
-app.use(cors({
-  origin:["https://my-todos-1koj.vercel.app"],
-  methods:["GET","POST","DELETE","PUT"],
-  credentials:true
-}));
+
 
 app.set('view engine', 'ejs');
 app.use(express.json());
