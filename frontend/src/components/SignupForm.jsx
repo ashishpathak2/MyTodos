@@ -69,11 +69,11 @@ const Addform = ({ }) => {
   }, [userData])
 
 
-  const registerUser = async (data) => {
+  const registerUser = (data) => {
 
     if (formType) {
       axios.defaults.withCredentials = true;
-      await axios.post(`${baseUrl}/users/register`, data)
+      axios.post(`${baseUrl}/users/register`, data)
         .then((res) => {
 
           if (res.data === "username already exists") {
@@ -98,7 +98,7 @@ const Addform = ({ }) => {
 
       try {
         axios.defaults.withCredentials = true;
-        await axios.post(`${baseUrl}/users/login`, data)
+        axios.post(`${baseUrl}/users/login`, data)
           .then((res) => {
             if (res.data) {
               getTodo()
