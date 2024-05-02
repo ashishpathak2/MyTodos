@@ -49,11 +49,11 @@ const Addform = ({ }) => {
   const registerUser = (data) => {
 
     if (formType) {
-      // axios.defaults.withCredentials = true;
+      axios.defaults.withCredentials = true;
       axios.post(`${baseUrl}/users/register`, data, {
-        headers: {
-          "Access-Control-Allow-Origin" : "true"
-        },
+         headers: {
+        "Content-Type": "multipart/form-data",
+      },
       })
         .then((res) => {
 
