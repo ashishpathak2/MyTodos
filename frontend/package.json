@@ -1,7 +1,7 @@
 {
   "name": "todo",
   "private": true,
-  "proxy":"http://localhost:3000",
+  "proxy":"https://my-todos-teal.vercel.app"
   "version": "0.0.0",
   "type": "module",
   "scripts": {
