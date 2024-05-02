@@ -21,7 +21,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(bodyParser.json());
-app.options('*', cors())
+// app.options('*', cors())
 app.use(cors({
   origin:["*"],
   methods:["GET","POST","DELETE","PUT"],
