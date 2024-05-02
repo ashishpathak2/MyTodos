@@ -50,11 +50,7 @@ const Addform = ({ }) => {
 
     if (formType) {
       axios.defaults.withCredentials = true;
-      axios.post(`${baseUrl}/users/register`, data, {
-         headers: {
-        "Content-Type": "multipart/form-data",
-      },
-      })
+      axios.post(`${baseUrl}/users/register`, data)
         .then((res) => {
 
           if (res.data === "username already exists") {
@@ -79,11 +75,7 @@ const Addform = ({ }) => {
 
       try {
         axios.defaults.withCredentials = true;
-        axios.post(`${baseUrl}/users/login`, data,{
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        })
+        axios.post(`${baseUrl}/users/login`, data)
           .then((res) => {
             if (res.data) {
               getTodo()
