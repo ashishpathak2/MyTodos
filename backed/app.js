@@ -22,10 +22,10 @@ app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(bodyParser.json());
 app.options('*', cors())
-app.op 
 app.use(cors({
-  origin:["https://my-todos-1koj.vercel.app"],
+  origin:["*"],
   methods:["GET","POST","DELETE","PUT"],
+  preflightContinue : true,
   credentials:true
 }));
 app.use(cookieParser());
