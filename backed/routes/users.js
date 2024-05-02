@@ -55,10 +55,10 @@ router.get("/auth/google",passport.authenticate("google"),function(req,res){
 
 router.post("/register", async function (req, res) {
     try {
-      const existingUser = await usersModel.findOne({username:req.body.username});
-      if (existingUser) {
-        return res.status(200).send("username already exists")
-      } 
+      // const existingUser = await usersModel.findOne({username:req.body.username});
+      // if (existingUser) {
+      //   return res.status(200).send("username already exists")
+      // } 
   
       var user = new usersModel({
         username: req.body.username,
