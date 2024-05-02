@@ -19,31 +19,8 @@ const Addform = ({ }) => {
   const [password, setPassword] = useState('');
   const [formType, setFormType] = useState(true)
   const [userData, setuserData] = useState()
-  const currentpath = window.location.href;
-  const { getTodo, setLoggedin } = stateData();
+  const { getTodo} = stateData();
 
-
-  // useEffect(() => {
-  //   if (currentpath === "http://localhost:5173/user") {
-
-  //     axios.defaults.withCredentials = true;
-  //     axios.get("http://localhost:3000/users/auth/google").
-  //       then((res) => {
-  //         getTodo()
-  //         setuserData(res.data);
-  //       })
-
-  //   }
-  // }, [currentpath])
-
-
-  // const googleUserName = () => {
-  //   axios.defaults.withCredentials = true;
-  //   axios.get("http://localhost:3000/users/google").
-  //     then((res) => {
-  //       setuserData(res.data);
-  //     })
-  // }
 
   const logout = () => {
     axios.get(`${baseUrl}/users/logout`)
@@ -72,8 +49,12 @@ const Addform = ({ }) => {
   const registerUser = (data) => {
 
     if (formType) {
-      // axios.defaults.withCredentials = true;
-      axios.post(`${baseUrl}/users/register`, data)
+      axios.defaults.withCredentials = true;
+      axios.post(`${baseUrl}/users/register`, data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
         .then((res) => {
 
           if (res.data === "username already exists") {
@@ -98,7 +79,11 @@ const Addform = ({ }) => {
 
       try {
         axios.defaults.withCredentials = true;
-        axios.post(`${baseUrl}/users/login`, data)
+        axios.post(`${baseUrl}/users/login`, data,{
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
           .then((res) => {
             if (res.data) {
               getTodo()
