@@ -11,7 +11,7 @@ router.get('/',function (req, res, next) {
 });
 
 
-router.get('/todo', async function (req, res) {
+router.get('/todo',isLoggedIn, async function (req, res) {
   await todoItems.find({CreatedByuserId : req.session.passport.user._id}).
     then((result) => {
       res.send(result).status(200)
@@ -20,7 +20,7 @@ router.get('/todo', async function (req, res) {
     });
 });
 
-router.post("/addtodo",async function (req, res) {
+router.post("/addtodo",isLoggedIn,async function (req, res) {
   try {
     
     var todo = new todoItems({
