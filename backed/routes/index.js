@@ -21,7 +21,7 @@ router.get('/todo', async function (req, res) {
     });
 });
 
-router.post("/addtodo",isLoggedIn,async function (req, res) {
+router.post("/addtodo",async function (req, res) {
   try {
     
     var todo = new todoItems({
