@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require("cors");
 var Session = require("express-session");
+const MemoryStore = require('memorystore')(Session)
+
 var bodyParser = require("body-parser")
 
 
@@ -29,7 +31,10 @@ app.use(cors({
 }));
 app.use(cookieParser());
 app.use(Session({
-  resave:false    ,
+  store: new MemoryStore({
+    checkPeriod: 86400000 
+  }),
+  resave:false,
   saveUninitialized:false,
   secret:"heyashishhere",
   cookie:{
