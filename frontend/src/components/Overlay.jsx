@@ -28,7 +28,8 @@ function Overlay() {
       <SignupFrom/>
 
 
-      { loggedInUser.length > 0 && 
+      {
+       loggedInUser.length > 0 && 
        todos && 
         todos.length > 0 ? todos.map((e,index) => (
 
