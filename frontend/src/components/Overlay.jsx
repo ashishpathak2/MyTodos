@@ -16,7 +16,7 @@ function Overlay() {
   const loggedInUser = localStorage.getItem('loggedInUser')
 
 
-    
+    console.log(todos);
  
 
   
@@ -28,7 +28,7 @@ function Overlay() {
       <SignupFrom/>
 
 
-      {
+      {/* {
        todos && 
         todos.length > 0 ? todos.map((e,index) => (
 
@@ -36,7 +36,7 @@ function Overlay() {
 
         )):
         null
-      }
+      } */}
 
 
 
