@@ -30,6 +30,9 @@ export default function Context({ children }) {
   const getTodo = () => {
     axios.get(`${baseUrl}/todo`)
       .then((res) => {
+        if(res.data === "please login"){
+          return;
+        }
         setTodos(res.data)
       }),
       (error) => {
