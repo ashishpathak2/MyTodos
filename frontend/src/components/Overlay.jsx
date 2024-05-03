@@ -1,10 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef} from 'react'
 import Cards from "./Cards"
-import { IoMdAdd } from "react-icons/io";
 import Addform from "./Addform"
 import { stateData } from '../contexts/Context';
 import SignupFrom from "./SignupForm"
-import axios from 'axios';
+
 
 
 
@@ -30,7 +29,7 @@ function Overlay() {
 
 
       {/* {loggedInUser.length > 0 && */}
-       {
+       {todos && 
         todos.length > 0 ? todos.map((e,index) => (
 
           <Cards data={e} reference={newref}  key={index} />
