@@ -16,7 +16,7 @@ function Overlay() {
   const loggedInUser = localStorage.getItem('loggedInUser')
 
 
-    console.log(todos);
+    
  
 
   
@@ -28,15 +28,15 @@ function Overlay() {
       <SignupFrom/>
 
 
-      {/* {
-       todos && 
+      {/* {loggedInUser.length > 0 && */}
+       {
         todos.length > 0 ? todos.map((e,index) => (
 
           <Cards data={e} reference={newref}  key={index} />
 
         )):
         null
-      } */}
+      }
 
 
 
