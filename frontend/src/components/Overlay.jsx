@@ -29,7 +29,7 @@ function Overlay() {
 
 
       {
-       loggedInUser.length > 0 && 
+       loggedInUser && loggedInUser.length > 0 && 
        todos && 
         todos.length > 0 ? todos.map((e,index) => (
 
