@@ -14,7 +14,9 @@ var UserRouter = require("./routes/users")
 var usersRouter = require('./collections/usersModel');
 const passport = require('passport');
 
-const MemoryStore = new Session.MemoryStore();
+// const MemoryStore = new Session.MemoryStore();
+const mongostore = require("connect-mongo") ;
+
 
 var app = express();
 
@@ -35,7 +37,9 @@ app.use(Session({
   resave:false,
   saveUninitialized:false,
   secret:"heyashishhere",
-  store:MemoryStore,
+  store:mongostore.create({
+    mongoUrl:"mongodb://mongo:XVXaxLcCjsfqOJKSwaGuUNWGiTOkYzJR@monorail.proxy.rlwy.net:15015",
+  }),
 
 }))
 
