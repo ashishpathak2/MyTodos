@@ -24,7 +24,7 @@ const Addform = ({ }) => {
 
   const logout = () => {
     axios.get(`${baseUrl}/users/logout`)
-    setTimeout(getTodo(),800)
+    setTimeout(() => {getTodo()} ,800)
     // window.location.replace("http://localhost:5173");
   }
 
