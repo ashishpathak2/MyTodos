@@ -4,13 +4,6 @@ const todoItems = require("../collections/todo_db");
 
 
 
-
-/* GET home page. */
-router.get('/',function (req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
-
 router.get('/todo',isLoggedIn, async function (req, res) {
   await todoItems.find({CreatedByuserId : req.session.passport.user._id}).
     then((result) => {
