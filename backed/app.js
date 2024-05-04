@@ -9,7 +9,8 @@ var bodyParser = require("body-parser")
 var indexRouter = require('./routes/index');
 var UserRouter = require("./routes/users")
 var usersRouter = require('./collections/usersModel');
-const passport = require('passport');
+var passport = require('passport');
+var monogoStore = require("connect-mongo")
 
 var app = express();
 
@@ -35,8 +36,13 @@ app.use(Session({
     httpOnly: true ,
     sameSite:"none",
     expires:24*60*60*1000,
-    
-  }
+  },
+  store:monogoStore.create({
+    mongoUrl:"mongodb://mongo:XVXaxLcCjsfqOJKSwaGuUNWGiTOkYzJR@monorail.proxy.rlwy.net:15015",
+    autoRemove: 'disabled',
+    touchAfter: 24 * 3600 ,
+
+  })
 }))
 
 app.use(passport.initialize());
