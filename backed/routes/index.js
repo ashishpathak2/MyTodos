@@ -12,7 +12,6 @@ router.get('/',function (req, res, next) {
 
 
 router.get('/todo',isLoggedIn, async function (req, res) {
-  console.log(req.isAuthenticated());
   await todoItems.find({CreatedByuserId : req.session.passport.user._id}).
     then((result) => {
       res.send(result).status(200)

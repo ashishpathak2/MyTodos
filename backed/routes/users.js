@@ -88,7 +88,7 @@ router.post("/register", async function (req, res) {
   
   router.post("/login",passport.authenticate("local"),function (req,res){
     console.log(req.isAuthenticated());
-    console.log(req.sessionID);
+    console.log(req.session);
      res.send(req.session.passport.user.username)
     
   })
