@@ -74,7 +74,7 @@ const Addform = ({ }) => {
     else {
 
       try {
-        axios.defaults.withCredentials = "true";
+        axios.defaults.withCredentials =true;
         axios.post(`${baseUrl}/users/login`, data)
           .then((res) => {
             if (res.data) {
