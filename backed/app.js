@@ -15,7 +15,7 @@ var usersRouter = require('./collections/usersModel');
 const passport = require('passport');
 
 // const MemoryStore = new Session.MemoryStore();
-// const mongostore = require("connect-mongo") ;
+const mongostore = require("connect-mongo") ;
 
 
 var app = express();
