@@ -10,7 +10,7 @@ var indexRouter = require('./routes/index');
 var UserRouter = require("./routes/users")
 var usersRouter = require('./collections/usersModel');
 var passport = require('passport');
-var monogoStore = require("connect-mongo")
+// var monogoStore = require("connect-mongo")
 
 var app = express();
 
@@ -27,7 +27,7 @@ app.use(cors({
   credentials:true
 }));
 app.use(cookieParser());
-// app.set("trust proxy", 1);
+app.set("trust proxy", 1);
 app.use(Session({
   resave:false,
   saveUninitialized:false,
@@ -38,12 +38,12 @@ app.use(Session({
     sameSite:"none",
     expires:24*60*60*1000,
   },
-  store:monogoStore.create({
-    mongoUrl:"mongodb://mongo:XVXaxLcCjsfqOJKSwaGuUNWGiTOkYzJR@monorail.proxy.rlwy.net:15015",
-    autoRemove: 'disabled',
-    touchAfter: 24 * 3600 ,
+  // store:monogoStore.create({
+  //   mongoUrl:"mongodb://mongo:XVXaxLcCjsfqOJKSwaGuUNWGiTOkYzJR@monorail.proxy.rlwy.net:15015",
+  //   autoRemove: 'disabled',
+  //   touchAfter: 24 * 3600 ,
 
-  })
+  // })
 }))
 
 app.use(passport.initialize());

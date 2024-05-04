@@ -87,8 +87,6 @@ router.post("/register", async function (req, res) {
   
   
   router.post("/login",passport.authenticate("local"),function (req,res){
-    console.log(req.isAuthenticated());
-    console.log(req.session);
      res.send(req.session.passport.user.username)
     
   })
@@ -101,8 +99,6 @@ router.post("/register", async function (req, res) {
         return next(err)
       }
     })
-    console.log(req.isAuthenticated());
-    console.log(req.sessionID);
     res.status(200).send("logout");
   })
   
