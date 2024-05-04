@@ -6,17 +6,10 @@ var logger = require('morgan');
 var cors = require("cors");
 var Session = require("express-session");
 var bodyParser = require("body-parser")
-
-
-
 var indexRouter = require('./routes/index');
 var UserRouter = require("./routes/users")
 var usersRouter = require('./collections/usersModel');
 const passport = require('passport');
-
-// const MemoryStore = new Session.MemoryStore();
-// const mongostore = require("connect-mongo") ;
-
 
 var app = express();
 
