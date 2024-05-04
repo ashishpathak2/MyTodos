@@ -24,11 +24,7 @@ const Addform = ({ }) => {
 
   const logout = () => {
     
-    axios.get(`${baseUrl}/users/logout`).then((res)=>{
-     if (res.data === "logout") {
-      return getTodo();
-     } 
-    })
+    axios.get(`${baseUrl}/users/logout`).then(getTodo());
     
     // window.location.replace("http://localhost:5173");
   }
