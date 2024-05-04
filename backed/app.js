@@ -27,21 +27,20 @@ app.use(express.json());
 app.use(bodyParser.json());
 
 app.use(cors({
-  origin:["https://my-todos-1koj.vercel.app"],
-  // origin:["http://localhost:5173"],
+  // origin:["https://my-todos-1koj.vercel.app"],
+  origin:["http://localhost:5173"],
   methods:["GET","POST","DELETE","PUT","OPTIONS"],
   credentials:true
 }));
 app.use(cookieParser());
 app.use(Session({
   resave:false,
-  saveUninitialized:false,
+  saveUninitialized:true,
   secret:"heyashishhere",
-  cookie:{
-    secure:true,
-    maxAge:24*60*60*1000,
-    sameSite:"none"
-  },
+  // cookie:{
+  //   secure:true,
+  //   maxAge:24*60*60*1000
+  // },
   store:mongostore.create({
     mongoUrl:"mongodb://mongo:XVXaxLcCjsfqOJKSwaGuUNWGiTOkYzJR@monorail.proxy.rlwy.net:15015",
   }),
