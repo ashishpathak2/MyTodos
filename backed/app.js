@@ -15,6 +15,7 @@ var indexRouter = require('./routes/index');
 var UserRouter = require("./routes/users")
 var usersRouter = require('./collections/usersModel');
 const passport = require('passport');
+const { NONAME } = require('dns');
 
 var app = express();
 
@@ -37,6 +38,7 @@ app.use(Session({
   httpOnly:false,
   secret:"heyashishhere",
   cookie:{
+    sameSite:'none',
     secure:false,
     maxAge:24*60*60*1000,
   }
