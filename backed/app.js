@@ -16,7 +16,6 @@ var UserRouter = require("./routes/users")
 var usersRouter = require('./collections/usersModel');
 const passport = require('passport');
 
-
 var app = express();
 
 // view engine setup
@@ -34,12 +33,11 @@ app.use(cors({
 app.use(cookieParser());
 app.use(Session({
   resave:false,
-  saveUninitialized:true,
+  saveUninitialized:false,
+  httpOnly:false,
   secret:"heyashishhere",
   cookie:{
-    secure: false,
-    httpOnly: false,
-    sameSite: 'none',
+    secure:true,
     maxAge:24*60*60*1000,
   }
 }))
