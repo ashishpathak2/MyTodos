@@ -3,7 +3,8 @@ var router = express.Router();
 const usersModel = require("../collections/usersModel");
 const passport = require("passport")
 const passportLocal = require("passport-local");
-const googlePassport = require("passport-google-oauth20")
+const googlePassport = require("passport-google-oauth20");
+const { set } = require('../app');
 
 
 passport.use(new passportLocal(usersModel.authenticate()));
@@ -88,6 +89,7 @@ router.post("/register", async function (req, res) {
   
   router.post("/login",passport.authenticate("local"),function (req,res){
     console.log(req.sessionID);
+    res.cookie("connect.sid" ,req.sessionID)
      res.send(req.session.passport.user.username)
     
   })
