@@ -35,12 +35,12 @@ app.use(cors({
 app.use(cookieParser());
 app.use(Session({
   resave:false,
-  saveUninitialized:false,
+  saveUninitialized:true,
   secret:"heyashishhere",
   cookie:{
     secure:false,
     maxAge:24*60*60*1000,
-    httpOnly:false,
+    sameSite:"strict"
   },
   store:mongostore.create({
     mongoUrl:"mongodb://mongo:XVXaxLcCjsfqOJKSwaGuUNWGiTOkYzJR@monorail.proxy.rlwy.net:15015",
