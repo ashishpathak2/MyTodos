@@ -35,10 +35,11 @@ app.use(cookieParser());
 app.use(Session({
   resave:false,
   saveUninitialized:false,
-  httpOnly:false,
   secret:"heyashishhere",
   cookie:{
-    sameSite:'none',
+    httpOnly: true,
+    secure: true,
+    sameSite: 'None',
     maxAge:24*60*60*1000,
   }
 }))
