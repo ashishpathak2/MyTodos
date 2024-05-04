@@ -34,15 +34,15 @@ app.use(cors({
 }));
 app.use(cookieParser());
 app.use(Session({
-  rolling:false,
   resave:false,
   saveUninitialized:false,
   secret:"heyashishhere",
   cookie:{
-    maxAge:24*60*60*1000
+    maxAge:24*60*60*1000,
   },
   store:mongostore.create({
     mongoUrl:"mongodb://mongo:XVXaxLcCjsfqOJKSwaGuUNWGiTOkYzJR@monorail.proxy.rlwy.net:15015",
+    autoRemove:"disabled",
   }),
 
 }))
