@@ -35,7 +35,7 @@ app.use(cors({
 app.use(cookieParser());
 app.use(Session({
   resave:false,
-  saveUninitialized:true,
+  saveUninitialized:false,
   secret:"heyashishhere",
   // cookie:{
   //   secure:true,
