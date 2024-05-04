@@ -28,12 +28,14 @@ app.use(cors({
 app.use(cookieParser());
 app.use(Session({
   resave:false,
-  saveUninitialized:true,
+  saveUninitialized:false,
   secret:"heyashishhere",
   cookie:{
     secure:true,
+    httpOnly: true ,
     sameSite:"none",
-    maxAge:24*60*60*1000,
+    expires:24*60*60*1000,
+    
   }
 }))
 
