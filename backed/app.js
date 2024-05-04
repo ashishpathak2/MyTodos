@@ -32,7 +32,7 @@ app.use(Session({
   saveUninitialized:false,
   secret:"heyashishhere",
   cookie:{
-    secure:true,
+    secure:false,
     httpOnly: true ,
     sameSite:"none",
     expires:24*60*60*1000,
