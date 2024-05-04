@@ -41,10 +41,10 @@ app.use(Session({
     secure:false,
     maxAge:24*60*60*1000,
   },
-  // store:mongostore.create({
-  //   mongoUrl:"mongodb://mongo:XVXaxLcCjsfqOJKSwaGuUNWGiTOkYzJR@monorail.proxy.rlwy.net:15015",
-  //   autoRemove:"disabled",
-  // }),
+  store:mongostore.create({
+    mongoUrl:"mongodb://mongo:XVXaxLcCjsfqOJKSwaGuUNWGiTOkYzJR@monorail.proxy.rlwy.net:15015",
+    autoRemove:"disabled",
+  }),
 
 }))
 
