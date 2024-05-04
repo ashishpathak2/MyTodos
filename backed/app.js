@@ -38,7 +38,7 @@ app.use(Session({
   saveUninitialized:false,
   secret:"heyashishhere",
   cookie:{
-    secure:true,
+    secure:false,
     maxAge:24*60*60*1000,
     httpOnly:false,
   },
