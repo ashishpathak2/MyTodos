@@ -40,7 +40,6 @@ app.use(Session({
   cookie:{
     secure:false,
     maxAge:24*60*60*1000,
-    httpOnly:false
   },
   // store:mongostore.create({
   //   mongoUrl:"mongodb://mongo:XVXaxLcCjsfqOJKSwaGuUNWGiTOkYzJR@monorail.proxy.rlwy.net:15015",
