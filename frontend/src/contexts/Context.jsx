@@ -26,7 +26,7 @@ export default function Context({ children }) {
 
 
   //Fetching Data from database of all products
-  axios.defaults.withCredentials = true;
+  axios.defaults.withCredentials = "include";
   const getTodo = () => {
     axios.get(`${baseUrl}/todo`)
       .then((res) => {

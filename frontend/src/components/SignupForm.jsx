@@ -49,7 +49,7 @@ const Addform = ({ }) => {
   const registerUser = (data) => {
 
     if (formType) {
-      axios.defaults.withCredentials = true;
+      axios.defaults.withCredentials = "include";
       axios.post(`${baseUrl}/users/register`, data)
         .then((res) => {
 
@@ -74,7 +74,7 @@ const Addform = ({ }) => {
     else {
 
       try {
-        axios.defaults.withCredentials = true;
+        axios.defaults.withCredentials = "include";
         axios.post(`${baseUrl}/users/login`, data)
           .then((res) => {
             if (res.data) {
