@@ -5,8 +5,6 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require("cors");
 var Session = require("express-session");
-const MemoryStore = require('memorystore')(Session)
-
 var bodyParser = require("body-parser")
 
 
@@ -15,6 +13,8 @@ var indexRouter = require('./routes/index');
 var UserRouter = require("./routes/users")
 var usersRouter = require('./collections/usersModel');
 const passport = require('passport');
+
+const MemoryStore = new Session.MemoryStore();
 
 var app = express();
 
@@ -25,8 +25,8 @@ app.use(express.json());
 app.use(bodyParser.json());
 
 app.use(cors({
-  origin:["https://my-todos-1koj.vercel.app"],
-  // origin:["http://localhost:5173"],
+  // origin:["https://my-todos-1koj.vercel.app"],
+  origin:["http://localhost:5173"],
   methods:["GET","POST","DELETE","PUT","OPTIONS"],
   credentials:true
 }));
@@ -34,12 +34,9 @@ app.use(cookieParser());
 app.use(Session({
   resave:false,
   saveUninitialized:false,
-  httpOnly:false,
   secret:"heyashishhere",
-  cookie:{
-    secure:true,
-    maxAge:24*60*60*1000,
-  }
+  store:MemoryStore,
+
 }))
 
 app.use(passport.initialize());
