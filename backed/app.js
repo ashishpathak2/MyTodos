@@ -29,7 +29,7 @@ app.use(bodyParser.json());
 app.use(cors({
   origin:["https://my-todos-1koj.vercel.app"],
   // origin:["http://localhost:5173"],
-  methods:["GET","POST","DELETE","PUT","OPTIONS"],
+  methods:["GET","POST","DELETE","PUT"],
   credentials:true
 }));
 app.use(cookieParser());
@@ -38,14 +38,9 @@ app.use(Session({
   saveUninitialized:false,
   secret:"heyashishhere",
   cookie:{
-    secure:true,
+    secure:false,
     maxAge:24*60*60*1000,
-  },
-  // store:mongostore.create({
-  //   mongoUrl:"mongodb://mongo:XVXaxLcCjsfqOJKSwaGuUNWGiTOkYzJR@monorail.proxy.rlwy.net:15015",
-  //   autoRemove:"disabled",
-  // }),
-
+  }
 }))
 
 app.use(passport.initialize());
