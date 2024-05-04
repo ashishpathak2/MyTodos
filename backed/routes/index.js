@@ -66,9 +66,11 @@ router.put("/edittodo/:id", async function(req,res){
   //FUNCTION FOR PROTECTING ROUTES 
  function isLoggedIn(req,res,next){
     if (req.isAuthenticated()) {
-      return next();
+       next();
+    }else{
+      res.send("please login")
     }
-    res.send("please login")
+   
     
   }
   
