@@ -32,11 +32,9 @@ app.use(cors({
 }));
 app.use(cookieParser());
 app.use(Session({
-  store: new MemoryStore({
-    checkPeriod: 86400000 
-  }),
   resave:false,
   saveUninitialized:false,
+  httpOnly:false,
   secret:"heyashishhere",
   cookie:{
     secure:false,
