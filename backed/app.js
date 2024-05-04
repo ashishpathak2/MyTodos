@@ -38,9 +38,9 @@ app.use(Session({
   saveUninitialized:false,
   secret:"heyashishhere",
   cookie:{
-    secure:false,
+    secure:true,
     maxAge:24*60*60*1000,
-    sameSite:"strict"
+    sameSite:"none"
   },
   store:mongostore.create({
     mongoUrl:"mongodb://mongo:XVXaxLcCjsfqOJKSwaGuUNWGiTOkYzJR@monorail.proxy.rlwy.net:15015",
