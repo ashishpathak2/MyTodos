@@ -101,6 +101,8 @@ router.post("/register", async function (req, res) {
         return next(err)
       }
     })
+    console.log(req.isAuthenticated());
+    console.log(req.sessionID);
     res.status(200).send("logout");
   })
   
