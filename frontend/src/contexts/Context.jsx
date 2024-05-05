@@ -40,14 +40,7 @@ export default function Context({ children }) {
       }
   }
 
-  const loggedUserName = async () => {
-    const resp = await axios.get(`${baseUrl}/authUserName`, { withCredentials: true })
-    localStorage.setItem('loggedInUser', resp.data);
-  }
 
-  useEffect(() => {
-    loggedUserName()
-  }, [])
 
 
   useEffect(() => {
