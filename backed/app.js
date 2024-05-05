@@ -29,7 +29,7 @@ app.use(cookieParser());
 app.set("trust proxy", 1);
 app.use(Session({
   resave:false,
-  saveUninitialized:false,
+  saveUninitialized:true,
   secret:"heyashishhere",
   cookie:{
     secure:true,
