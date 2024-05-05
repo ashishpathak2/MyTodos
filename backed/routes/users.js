@@ -10,7 +10,7 @@ passport.use(new passportLocal(usersModel.authenticate()));
 
 
 passport.use(new googlePassport({
-  callbackURL:"http://localhost:3000/users/auth/google",
+  callbackURL:"https://mytodosapp-6h9w.onrender.com/users/auth/google",
   clientID:"95363308184-nebmo0nlt7n0ivqen9g4ttv7bqga8p80.apps.googleusercontent.com",
   clientSecret:"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"
 },(accessToken,refreshToken,profile,done)=>{
@@ -49,7 +49,7 @@ router.get("/auth",passport.authenticate("google",{
 
 router.get("/auth/google",passport.authenticate("google"),function(req,res){
   res.cookie("username" ,req.session.passport.user.username)
-  res.redirect("http://localhost:5173")
+  res.redirect("https://my-todos-1koj.vercel.app")
  
 })
 
