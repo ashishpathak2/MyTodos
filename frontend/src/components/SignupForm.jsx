@@ -37,9 +37,7 @@ const Addform = ({ }) => {
 
   const googleHandlerfunc = async ()=> {
     const val = await googleHandler()
-    if (val === "hello") {
-       await loggedUserName()
-    }
+     await loggedUserName()
   }
 
   const googleHandler = async ()=>{
