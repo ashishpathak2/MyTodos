@@ -31,9 +31,9 @@ const Addform = ({ }) => {
     localStorage.setItem('loggedInUser', resp.data);
   }
 
-  const googleHandler = ()=>{
+  const googleHandler = async ()=>{
     window.open("https://mytodosapp-6h9w.onrender.com/users/auth","_self")
-    setTimeout(loggedUserName(),1000)
+    await loggedUserName()
   }
 
   const handleClick = () => {
