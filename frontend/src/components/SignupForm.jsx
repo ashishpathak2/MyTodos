@@ -26,16 +26,16 @@ const Addform = ({ }) => {
     axios.get(`${baseUrl}/users/logout`)
   }
 
-  const loggedUserName = () => {
+  const loggedUserName = async () => {
     axios.defaults.withCredentials = true ;
-    axios.get(`${baseUrl}/users/authUserName`).then((res)=>{
+     await axios.get(`${baseUrl}/users/authUserName`).then((res)=>{
       localStorage.setItem('loggedInUser', res.data);
     })
   }
 
-  const googleHandler = ()=>{
+  const googleHandler = async ()=>{
     window.open("https://mytodosapp-6h9w.onrender.com/users/auth","_self");
-     loggedUserName();
+    loggedUserName();
   }
 
   const handleClick = () => {
