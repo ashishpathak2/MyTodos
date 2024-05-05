@@ -14,7 +14,6 @@ passport.use(new googlePassport({
   clientID:"95363308184-nebmo0nlt7n0ivqen9g4ttv7bqga8p80.apps.googleusercontent.com",
   clientSecret:"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"
 },(accessToken,refreshToken,profile,done)=>{
-  console.log(profile);
     usersModel.findOne({googleID:profile.id}).then((currentUser)=>{
       if (currentUser) {
         return done(null,currentUser)
@@ -53,9 +52,10 @@ router.get("/auth/google",passport.authenticate("google",{
 }))
 
 
-router.get("/authUserName",isLoggedIn,function(req,res){
-
+router.get("/authUserName",function(req,res){
+  console.log(req.session.passport.user.username);
   res.send(req.session.passport.user.username)
+  
   // res.cookie("username" ,req.session.passport.user.username)
   // res.redirect("https://my-todos-1koj.vercel.app")
 
