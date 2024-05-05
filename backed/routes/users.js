@@ -48,7 +48,12 @@ router.get("/auth",passport.authenticate("google",{
 }));
 
 
-router.get("/auth/google",passport.authenticate("google"),function(req,res){
+router.get("/auth/google",passport.authenticate("google",{
+  successRedirect:"/success"
+}))
+
+
+router.get("/success",function(req,res){
 
   res.cookie("username" ,req.session.passport.user.username)
   res.redirect("https://my-todos-1koj.vercel.app")
