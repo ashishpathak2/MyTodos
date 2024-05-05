@@ -26,14 +26,16 @@ const Addform = ({ }) => {
     axios.get(`${baseUrl}/users/logout`)
   }
 
-  const loggedUserName = async () => {
-    const resp = await axios.get(`${baseUrl}/users/authUserName`, { withCredentials: true })
-    localStorage.setItem('loggedInUser', resp.data);
+  const loggedUserName = () => {
+    axios.defaults.withCredentials = true ;
+    axios.get(`${baseUrl}/users/authUserName`).then((res)=>{
+      localStorage.setItem('loggedInUser', res.data);
+    })
   }
 
-  const googleHandler = async ()=>{
-    window.open("https://mytodosapp-6h9w.onrender.com/users/auth","_self")
-    await loggedUserName()
+  const googleHandler = ()=>{
+    window.open("https://mytodosapp-6h9w.onrender.com/users/auth","_self");
+     loggedUserName();
   }
 
   const handleClick = () => {
@@ -199,7 +201,7 @@ const Addform = ({ }) => {
                 </div> */}
                    <div className="flex items-center justify-center">
                   <button className="bg-white w-60 flex items-center justify-center gap-2 p-2 text-center rounded-sm hover:scale-110 transition ease-in-out "
-                    onClick={()=> googleHandler()}><FcGoogle size="1.8rem" />Continue with Google</button>
+                    onClick={googleHandler()}><FcGoogle size="1.8rem" />Continue with Google</button>
                 </div>
 
 
