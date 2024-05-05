@@ -33,6 +33,7 @@ app.use(Session({
   secret:"heyashishhere",
   cookie:{
     secure:true,
+    httpOnly: true ,
     sameSite:"none",
     expires:24*60*60*1000,
   },
