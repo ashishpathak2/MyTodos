@@ -35,17 +35,17 @@ const Addform = ({ }) => {
     return "success";
   }
 
-  const googleHandlerfunc = ()=> {
-   googleHandler().then((res)=>{
-    console.log(res);
-     loggedUserName()
-   })
+  // const googleHandlerfunc = ()=> {
+  //  googleHandler().then((res)=>{
+  //   console.log(res);
+  //    loggedUserName()
+  //  })
      
-  }
+  // }
 
   const googleHandler = async ()=>{
     window.open("https://mytodosapp-6h9w.onrender.com/users/auth","_self");
-    return "hello";
+    await loggedUserName();
     // loggedUserName();
   }
 
@@ -212,7 +212,7 @@ const Addform = ({ }) => {
                 </div> */}
                    <div className="flex items-center justify-center">
                   <button className="bg-white w-60 flex items-center justify-center gap-2 p-2 text-center rounded-sm hover:scale-110 transition ease-in-out "
-                    onClick={() => googleHandlerfunc()}><FcGoogle size="1.8rem" />Continue with Google</button>
+                    onClick={() => googleHandler()}><FcGoogle size="1.8rem" />Continue with Google</button>
                 </div>
 
 
