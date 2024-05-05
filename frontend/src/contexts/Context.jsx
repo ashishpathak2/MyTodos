@@ -18,11 +18,11 @@ export default function Context({ children }) {
   const loggedInUser = localStorage.getItem('loggedInUser')
 
 
-  if (document.cookie && document.cookie.length > 9) {
-    const cookie = document.cookie.split('=');
-    localStorage.setItem('loggedInUser', cookie[1].split('%')[0])
-    document.cookie = "username="
-  }
+  // if (document.cookie && document.cookie.length > 9) {
+  //   const cookie = document.cookie.split('=');
+  //   localStorage.setItem('loggedInUser', cookie[1].split('%')[0])
+  //   document.cookie = "username="
+  // }
 
 
   //Fetching Data from database of all products
