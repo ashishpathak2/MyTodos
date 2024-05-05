@@ -43,17 +43,21 @@ export default function Context({ children }) {
 
   useEffect(() => {
 
+
+    if (loggedInUser && loggedInUser.length > 0) {
+        getTodo();
+
+
+        
     axios.defaults.withCredentials = true;
     axios.get(`${baseUrl}/authUserName`)
       .then((res) => {
         if(res.data){
+          console.log(res.data);
           localStorage.setItem('loggedInUser', res.data);
         }
       })
     
-
-    if (loggedInUser && loggedInUser.length > 0) {
-      getTodo();
     }
     
 
