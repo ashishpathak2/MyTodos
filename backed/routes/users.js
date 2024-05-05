@@ -52,9 +52,7 @@ router.get("/auth/google",passport.authenticate("google"),function(req,res){
 
   res.cookie("username" ,req.session.passport.user.username , 
   {
-    sameSite:"strict",
-    secure:false,
-    
+    secure:false, 
   })
   res.redirect("https://my-todos-1koj.vercel.app")
 
