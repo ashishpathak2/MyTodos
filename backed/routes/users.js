@@ -54,7 +54,7 @@ router.get("/auth/google",passport.authenticate("google"),function(req,res){
     sameSite:"none",
     secure:true,
     httpOnly:true,
-    expires:24*60*60*1000
+    
   })
   res.redirect("https://my-todos-1koj.vercel.app")
 
