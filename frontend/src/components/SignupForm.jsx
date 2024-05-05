@@ -35,9 +35,12 @@ const Addform = ({ }) => {
     return "success";
   }
 
-  const googleHandlerfunc = async ()=> {
-    const val = await googleHandler()
-     await loggedUserName()
+  const googleHandlerfunc = ()=> {
+   googleHandler().then((res)=>{
+    console.log(res);
+     loggedUserName()
+   })
+     
   }
 
   const googleHandler = async ()=>{
