@@ -22,21 +22,23 @@ const Addform = ({ }) => {
   const { getTodo} = stateData();
 
 
+
   const logout = () => {
     axios.get(`${baseUrl}/users/logout`)
   }
 
-  const loggedUserName = () => {
+  const loggedUserName = async () => {
     axios.defaults.withCredentials = true ;
-    axios.get(`${baseUrl}/users/authUserName`).then((res)=>{
+    await axios.get(`${baseUrl}/users/authUserName`).then((res)=>{
       localStorage.setItem('loggedInUser', res.data);
     })
+    return "success";
   }
 
   const googleHandlerfunc = async ()=> {
     const val = await googleHandler()
     if (val === "hello") {
-      loggedUserName()
+       await loggedUserName()
     }
   }
 
