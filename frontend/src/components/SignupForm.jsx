@@ -23,10 +23,8 @@ const Addform = ({ }) => {
 
 
   const logout = () => {
-    getTodo();
     axios.get(`${baseUrl}/users/logout`)
-    
-    // window.location.replace("http://localhost:5173");
+
   }
 
   const handleClick = () => {
