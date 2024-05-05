@@ -33,9 +33,10 @@ const Addform = ({ }) => {
     })
   }
 
-  const googleHandler = ()=>{
+  const googleHandler = async ()=>{
     window.open("https://mytodosapp-6h9w.onrender.com/users/auth","_self");
-    loggedUserName();
+    return ;
+    // loggedUserName();
   }
 
   const handleClick = () => {
