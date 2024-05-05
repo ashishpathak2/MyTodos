@@ -30,7 +30,7 @@ export default function Context({ children }) {
   const getTodo = () => {
     axios.get(`${baseUrl}/todo`)
       .then((res) => {
-        if(res.data === "please login"){
+        if (res.data === "please login") {
           return;
         }
         setTodos(res.data)
@@ -41,14 +41,8 @@ export default function Context({ children }) {
   }
 
 
-  useEffect(() => {
+  useEffect(()=>{
 
-
-    if (loggedInUser && loggedInUser.length > 0) {
-        getTodo();
-
-
-        
     axios.defaults.withCredentials = true;
     axios.get(`${baseUrl}/authUserName`)
       .then((res) => {
@@ -58,10 +52,15 @@ export default function Context({ children }) {
         }
       })
     
-    }
-    
+  },[])
 
-  }, [])
+
+  useEffect(() => {
+    if (loggedInUser && loggedInUser.length > 0) {
+      getTodo();
+    }
+
+  }, [loggedInUser])
 
 
 
