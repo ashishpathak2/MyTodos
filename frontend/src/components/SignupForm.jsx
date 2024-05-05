@@ -32,7 +32,7 @@ const Addform = ({ }) => {
   }
 
   const googleHandler = ()=>{
-    window.open("https://mytodosapp-6h9w.onrender.com/users/auth/google")
+    window.open("https://mytodosapp-6h9w.onrender.com/users/auth","_self")
      loggedUserName();
   }
 
