@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 
 app.use(cors({
   origin:["https://my-todos-1koj.vercel.app"],
-  methods:["GET","POST","DELETE","PUT"],
+  methods:["GET","POST","DELETE","PUT","OPTIONS"],
   credentials:true
 }));
 app.use(cookieParser());
