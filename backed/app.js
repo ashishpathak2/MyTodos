@@ -31,12 +31,12 @@ app.use(Session({
   resave:false,
   saveUninitialized:false,
   secret:"heyashishhere",
-  cookie:{
-    secure:true,
-    httpOnly: true ,
-    sameSite:"none",
-    expires:24*60*60*1000,
-  },
+  // cookie:{
+  //   secure:true,
+  //   httpOnly: true ,
+  //   sameSite:"none",
+  //   expires:24*60*60*1000,
+  // },
   // store:monogoStore.create({
   //   mongoUrl:"mongodb://mongo:XVXaxLcCjsfqOJKSwaGuUNWGiTOkYzJR@monorail.proxy.rlwy.net:15015",
   //   autoRemove: 'disabled',
