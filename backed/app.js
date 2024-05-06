@@ -29,12 +29,12 @@ app.use(cookieParser());
 // app.set("trust proxy", 1);
 app.use(Session({
   resave:false,
-  saveUninitialized:false,
+  saveUninitialized:true,
   secret:"heyashishhere",
   cookie:{
     secure:true,
     httpOnly: true ,
-    sameSite:"lax",
+    sameSite:"none",
     maxAge:24*60*60*1000,
   },
   // store:monogoStore.create({
