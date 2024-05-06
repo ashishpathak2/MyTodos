@@ -4,6 +4,7 @@ const usersModel = require("../collections/usersModel");
 const passport = require("passport")
 const passportLocal = require("passport-local");
 const googlePassport = require("passport-google-oauth20");
+const session = require('express-session');
 
 
 passport.use(new passportLocal(usersModel.authenticate()));
@@ -55,7 +56,9 @@ router.get("/auth/google",passport.authenticate("google"),function (req,res) {
 
 router.get("/authUserName",function(req,res){
   console.log(req.session.passport.user.username);
-   res.send(req.session.passport.user.username);
+  req.session.cookie = req.session.passport.user.username ;
+  console.log(req.session.cookie);
+  //  res.send(req.session.passport.user.username);
   // res.redirect("https://my-todos-1koj.vercel.app") 
 })
 
