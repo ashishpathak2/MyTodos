@@ -47,14 +47,15 @@ router.get("/auth",passport.authenticate("google",{
 }));
 
 
-router.get("/auth/google",passport.authenticate("google",{
-  successRedirect:"https://my-todos-1koj.vercel.app"
-}))
+router.get("/auth/google",passport.authenticate("google"),function (req,res) {
+  res.redirect("https://my-todos-1koj.vercel.app")
+  
+})
 
 
 router.get("/authUserName",function(req,res){
-  console.log(req.sessionStore.user);
-  // res.send(req.sessionStore.user)
+  console.log(req.session.passport.user.username);
+  res.send(req.session.passport.user.usernamer);
   // res.cookie("username" ,req.session.passport.user.username)
   // res.redirect("https://my-todos-1koj.vercel.app") 
 })
