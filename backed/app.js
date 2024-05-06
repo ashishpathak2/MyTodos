@@ -29,10 +29,10 @@ app.use(cookieParser());
 app.set("trust proxy", 1);
 app.use(Session({
   resave:false,
-  saveUninitialized:true,
+  saveUninitialized:false,
   secret:"heyashishhere",
   cookie:{
-    secure:true,
+    secure:false,
     // httpOnly: true ,
     sameSite:"none",
     maxAge:24*60*60*1000,
