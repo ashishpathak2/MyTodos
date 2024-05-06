@@ -34,7 +34,7 @@ app.use(Session({
   cookie:{
     secure:false,
     // httpOnly: true ,
-    sameSite:"none",
+    // sameSite:"none",
     maxAge:24*60*60*1000,
   },
   // store:monogoStore.create({
