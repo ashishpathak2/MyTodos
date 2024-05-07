@@ -38,9 +38,9 @@ const Addform = ({ }) => {
     })
   }
 
-  useEffect(() => {
-    googleloggedUser()
-  }, [])
+  // useEffect(() => {
+  //   googleloggedUser()
+  // }, [])
 
   const handleClick = () => {
     if (!userData) setIsOpen(true);
@@ -52,12 +52,14 @@ const Addform = ({ }) => {
   }
 
   useEffect(() => {
+    googleloggedUser();
     if (localStorage.getItem("loggedInUser")) {
       setuserData(localStorage.getItem("loggedInUser"))
     }
     else if (userData) {
       localStorage.setItem("loggedInUser", userData)
     }
+   
   }, [userData])
 
 
