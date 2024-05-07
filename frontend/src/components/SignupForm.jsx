@@ -44,16 +44,20 @@ const Addform = ({ }) => {
   // }
 
   const googleHandler = ()=>{
-  var newWindow = window.open("https://mytodosapp-6h9w.onrender.com/users/auth");
+    window.onload =function (){
+      loggedUserName();
+    }
 
-  if(newWindow){
-    newWindow.onload = function() {
-      console.log(newWindow);
-        loggedUserName();
-    };
-} else {
-    console.error("Failed to open window.");
-}
+//   var newWindow = window.open("https://mytodosapp-6h9w.onrender.com/users/auth");
+
+//   if(newWindow){
+//     newWindow.onload = function() {
+//       console.log(newWindow);
+//         loggedUserName();
+//     };
+// } else {
+//     console.error("Failed to open window.");
+// }
   }
 
   const handleClick = () => {
