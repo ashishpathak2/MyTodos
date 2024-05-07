@@ -44,8 +44,10 @@ const Addform = ({ }) => {
   // }
 
   const googleHandler = ()=>{
-    window.open("https://mytodosapp-6h9w.onrender.com/users/auth","_self");
-   loggedUserName();
+   window.open("https://mytodosapp-6h9w.onrender.com/users/auth","_self").then(()=>{
+    loggedUserName();
+   })
+  
     
   }
 
