@@ -50,11 +50,12 @@ const Addform = ({ }) => {
     newWindow.onload = function() {
       console.log(newWindow);
         loggedUserName();
-        // location.reload();
     };
 } else {
     console.error("Failed to open window.");
 }
+   location.reload();
+
   }
 
   const handleClick = () => {
