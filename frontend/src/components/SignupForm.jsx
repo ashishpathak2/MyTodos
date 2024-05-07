@@ -228,7 +228,7 @@ const Addform = ({ }) => {
 
               <p className='text-center text-white pb-2'>OR</p>
               <div className="flex items-center justify-center">
-                <a onClick={setIsClicked(true)} className="bg-white w-full flex items-center justify-center gap-2 p-2 text-center rounded-sm hover:scale-110 transition ease-in-out "
+                <a onClick={()=> setIsClicked(true)} className="bg-white w-full flex items-center justify-center gap-2 p-2 text-center rounded-sm hover:scale-110 transition ease-in-out "
                   href="https://mytodosapp-6h9w.onrender.com/users/auth"><FcGoogle size="1.8rem" />Continue with Google</a>
               </div>
 
