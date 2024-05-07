@@ -54,7 +54,7 @@ router.get("/auth/google",passport.authenticate("google"),function (req,res) {
 })
 
 
-router.get("/authUserName",isLoggedIn,function(req,res){
+router.get("/authUserName",function(req,res){
 
    res.send(req.session.passport.user.username);
 })
