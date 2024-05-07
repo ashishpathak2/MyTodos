@@ -45,7 +45,7 @@ const Addform = ({ }) => {
 
   useEffect(()=>{
     loggedUserName()
-  },[googleHandler])
+  },[])
 
   const handleClick = () => {
     if (!userData) setIsOpen(true);
