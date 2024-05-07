@@ -54,8 +54,6 @@ const Addform = ({ }) => {
 } else {
     console.error("Failed to open window.");
 }
-   location.reload();
-
   }
 
   const handleClick = () => {
