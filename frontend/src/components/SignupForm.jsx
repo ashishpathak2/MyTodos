@@ -23,9 +23,8 @@ const Addform = ({ }) => {
 
 
 
-  const logout = async () => {
-    await axios.get(`${baseUrl}/users/logout`);
-    window.location.href = "https://my-todos-1koj.vercel.app";
+  const logout =  () => {
+     axios.get(`${baseUrl}/users/logout`);
   }
 
 
@@ -48,6 +47,8 @@ const Addform = ({ }) => {
       setuserData(null)
       logout();
       localStorage.setItem("loggedInUser", "")
+      window.location.href = "https://my-todos-1koj.vercel.app";
+
     };
   }
 
