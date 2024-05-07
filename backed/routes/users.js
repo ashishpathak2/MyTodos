@@ -54,7 +54,7 @@ router.get("/auth/google",passport.authenticate("google"),function (req,res) {
 })
 
 
-router.get("/authUserName",function(req,res){
+router.get("/authUserName",isLoggedIn,function(req,res){
 
    res.send(req.session.passport.user.username);
 })
@@ -110,13 +110,13 @@ router.post("/register", async function (req, res) {
   })
   
   
-//   //FUNCTION FOR PROTECTING ROUTES 
-//   function isLoggedIn(req,res,next){
-//     if (req.isAuthenticated()) {
-//       return next
-//     }
-//     res.send("please login")
-// }
+  //FUNCTION FOR PROTECTING ROUTES 
+  function isLoggedIn(req,res,next){
+    if (req.isAuthenticated()) {
+      return next
+    }
+    res.send("please login")
+}
 
 
   
