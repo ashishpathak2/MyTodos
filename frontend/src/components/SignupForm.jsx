@@ -23,9 +23,10 @@ const Addform = ({ }) => {
 
 
 
-  const logout = () => {
-    axios.get(`${baseUrl}/users/logout`)
-    location.reload()
+  const logout = async () => {
+    await axios.get(`${baseUrl}/users/logout`)
+    // location.reload()
+    getTodo();
   }
 
   const googleloggedUser = () => {
