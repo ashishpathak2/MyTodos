@@ -21,8 +21,8 @@ export default function Context({ children }) {
 
   //Fetching Data from database of all products
   axios.defaults.withCredentials = true;
-  const getTodo = () => {
-    axios.get(`${baseUrl}/todo`)
+  const getTodo = async () => {
+   await axios.get(`${baseUrl}/todo`)
       .then((res) => {
         if (res.data === "please login") {
           return;
