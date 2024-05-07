@@ -38,9 +38,9 @@ const Addform = ({ }) => {
     })
   }
 
-  useEffect(() => {
-    googleloggedUser()
-  }, [])
+  // useEffect(() => {
+  //   googleloggedUser()
+  // }, [])
 
   const handleClick = () => {
     if (!userData) setIsOpen(true);
