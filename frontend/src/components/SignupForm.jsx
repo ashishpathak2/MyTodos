@@ -44,10 +44,8 @@ const Addform = ({ }) => {
   // }
 
   const googleHandler = () => {
-    var newWindow = window.open("https://mytodosapp-6h9w.onrender.com/users/auth").then(() => {
-      loggedUserName();
-    })
-
+    var newWindow = window.open("https://mytodosapp-6h9w.onrender.com/users/auth","_self")
+    location.reload();
     //   if(newWindow){
     //     newWindow.onload = function() {
     //       console.log(newWindow);
@@ -57,6 +55,10 @@ const Addform = ({ }) => {
     //     console.error("Failed to open window.");
     // }
   }
+
+  useEffect(()=>{
+    loggedUserName();
+  },[])
 
   const handleClick = () => {
     if (!userData) setIsOpen(true);
