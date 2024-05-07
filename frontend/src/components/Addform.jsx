@@ -19,15 +19,15 @@ const Addform = () => {
   const [timeRemaining, setTimeRemaining] = useState('');
   const { getTodo } = stateData();
   
-  const postTodo =  async (data) => {
-     await axios.post(`${baseUrl}/addtodo`, data)
+  const postTodo = (data) => {
+     axios.post(`${baseUrl}/addtodo`, data)
       .then((res) => {
         if (res.data === "please login") {
           return  toast.dark("Please login",{
             position: "top-center"
           })
         }
-        getTodo();
+        
       }),
       (error) => {
         console.log(error);
@@ -37,16 +37,12 @@ const Addform = () => {
   
 const handleSubmit =  (e) => {
     e.preventDefault();
-    // Handle form submission logic here 
-    const newData =  { description, priorityLevel, timeRemaining };
-    postTodo(newData)
-
-   // Clear form fields after submission
+    postTodo( { description, priorityLevel, timeRemaining } );
     setDescription('');
     setPriority('');
     setTimeRemaining('');
-    // Close modal after submission
     setIsOpen(false);
+    getTodo();
  };
  
 
