@@ -19,7 +19,7 @@ const Addform = ({ }) => {
   const [password, setPassword] = useState('');
   const [formType, setFormType] = useState(true)
   const [userData, setuserData] = useState()
-  const { getTodo} = stateData();
+  const { getTodo } = stateData();
 
 
 
@@ -28,8 +28,8 @@ const Addform = ({ }) => {
   }
 
   const loggedUserName = () => {
-    axios.defaults.withCredentials = true ;
-    axios.get(`${baseUrl}/users/authUserName`).then((res)=>{
+    axios.defaults.withCredentials = true;
+    axios.get(`${baseUrl}/users/authUserName`).then((res) => {
       localStorage.setItem('loggedInUser', res.data);
     })
     return "success";
@@ -40,22 +40,22 @@ const Addform = ({ }) => {
   //   console.log(res);  
   //    loggedUserName()
   //  })
-     
+
   // }
 
-  const googleHandler = ()=>{
-  var newWindow = window.open("https://mytodosapp-6h9w.onrender.com/users/auth").then(()=>{
-    loggedUserName();
-  })
+  const googleHandler = () => {
+    var newWindow = window.open("https://mytodosapp-6h9w.onrender.com/users/auth").then(() => {
+      loggedUserName();
+    })
 
-//   if(newWindow){
-//     newWindow.onload = function() {
-//       console.log(newWindow);
-//         loggedUserName();
-//     };
-// } else {
-//     console.error("Failed to open window.");
-// }
+    //   if(newWindow){
+    //     newWindow.onload = function() {
+    //       console.log(newWindow);
+    //         loggedUserName();
+    //     };
+    // } else {
+    //     console.error("Failed to open window.");
+    // }
   }
 
   const handleClick = () => {
@@ -80,7 +80,7 @@ const Addform = ({ }) => {
   const registerUser = async (data) => {
 
     if (formType) {
-      axios.defaults.withCredentials = true ;
+      axios.defaults.withCredentials = true;
       await axios.post(`${baseUrl}/users/register`, data)
         .then((res) => {
 
@@ -105,8 +105,8 @@ const Addform = ({ }) => {
     else {
 
       try {
-        axios.defaults.withCredentials =true;
-       await axios.post(`${baseUrl}/users/login`, data)
+        axios.defaults.withCredentials = true;
+        await axios.post(`${baseUrl}/users/login`, data)
           .then((res) => {
             if (res.data) {
               getTodo()
@@ -232,21 +232,21 @@ const Addform = ({ }) => {
                 </div>
 
               </form>
-              
-              {/* <div className="flex items-center justify-center">
-                  <button className="bg-white w-60 flex items-center justify-center gap-2 p-2 text-center rounded-sm hover:scale-110 transition ease-in-out "
-                    onClick={() => googleHandler()}><FcGoogle size="1.8rem" />Continue with Google</button>
-                </div> */}
 
-                 <p className='text-center text-white pb-2'>OR</p>
-                <div className="flex items-center justify-center">
+              <div className="flex items-center justify-center">
+                <button className="bg-white w-60 flex items-center justify-center gap-2 p-2 text-center rounded-sm hover:scale-110 transition ease-in-out "
+                  onClick={() => googleHandler()}><FcGoogle size="1.8rem" />Continue with Google</button>
+              </div>
+
+              <p className='text-center text-white pb-2'>OR</p>
+              {/* <div className="flex items-center justify-center">
                   <a  onClick={() => googleHandler()} className="bg-white w-60 flex items-center justify-center gap-2 p-2 text-center rounded-sm hover:scale-110 transition ease-in-out "
                     href="https://mytodosapp-6h9w.onrender.com/users/auth"><FcGoogle size="1.8rem" />Continue with Google</a>
                 </div>
-                
+                 */}
 
 
-           
+
             </div>
           </div>
         )
