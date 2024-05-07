@@ -33,7 +33,7 @@ const Addform = ({ }) => {
         setuserData(res.data);
         localStorage.setItem('loggedInUser', res.data);
         getTodo();
-
+        setIsClicked(false);
       }
    
      
