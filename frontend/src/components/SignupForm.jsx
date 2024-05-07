@@ -45,9 +45,11 @@ const Addform = ({ }) => {
 
   const googleHandler = ()=>{
   var newWindow = window.open("https://mytodosapp-6h9w.onrender.com/users/auth");
+
   if(newWindow){
     newWindow.onload = function() {
         loggedUserName();
+        window.location.href("https://my-todos-1koj.vercel.app/")
     };
 } else {
     console.error("Failed to open window.");
