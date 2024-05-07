@@ -28,6 +28,7 @@ const Addform = ({ }) => {
   const googleloggedUser = () => {
     axios.defaults.withCredentials = true;
     axios.get(`${baseUrl}/users/authUserName`).then((res) => {
+    if (res.data) {
       if (res.data === "please login") {
         return toast.dark("hello");
       }
@@ -36,6 +37,7 @@ const Addform = ({ }) => {
         localStorage.setItem('loggedInUser', res.data);
         getTodo();
       }
+    }
 
     })
   }
