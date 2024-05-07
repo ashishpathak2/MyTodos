@@ -37,7 +37,7 @@ const Addform = ({ }) => {
 
   // const googleHandlerfunc = ()=> {
   //  googleHandler().then((res)=>{
-  //   console.log(res);
+  //   console.log(res);  
   //    loggedUserName()
   //  })
      
@@ -45,7 +45,7 @@ const Addform = ({ }) => {
 
   const googleHandler = ()=>{
     window.open("https://mytodosapp-6h9w.onrender.com/users/auth","_self");
-  //  loggedUserName();
+   loggedUserName();
     
   }
 
