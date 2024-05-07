@@ -55,7 +55,7 @@ router.get("/auth/google",passport.authenticate("google"),function (req,res) {
 
 
 router.get("/authUserName",async function(req,res){
-  console.log(await req.session.passport.user.username);
+  console.log(req.session.passport.user.username);
   req.session.cookie = await req.session.passport.user.username ;
   console.log(req.session.cookie);
   //  res.send(req.session.passport.user.username);
