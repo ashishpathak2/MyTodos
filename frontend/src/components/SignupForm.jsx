@@ -38,30 +38,14 @@ const Addform = ({ }) => {
     return "success";
   }
 
-  // const googleHandlerfunc = ()=> {
-  //  googleHandler().then((res)=>{
-  //   console.log(res);  
-  //    loggedUserName()
-  //  })
-
-  // }
-
   const googleHandler = () => {
-    var newWindow = window.open("https://mytodosapp-6h9w.onrender.com/users/auth","_self")
-    // location.reload();
-    //   if(newWindow){
-    //     newWindow.onload = function() {
-    //       console.log(newWindow);
-    //         loggedUserName();
-    //     };
-    // } else {
-    //     console.error("Failed to open window.");
-    // }
+   window.open("https://mytodosapp-6h9w.onrender.com/users/auth","_self")
+   
   }
 
   useEffect(()=>{
     loggedUserName()
-  },[])
+  },[googleHandler])
 
   const handleClick = () => {
     if (!userData) setIsOpen(true);
