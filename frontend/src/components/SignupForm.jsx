@@ -52,7 +52,7 @@ const Addform = ({ }) => {
   const logout =  () => {
     axios.get(`${baseUrl}/users/logout`);
     setuserData(null)
-    localStorage.setItem("loggedInUser", "")
+    localStorage.removeItem("loggedInUser")
     window.location.href = "https://my-todos-1koj.vercel.app";
  }
 
