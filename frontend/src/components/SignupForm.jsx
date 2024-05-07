@@ -29,7 +29,7 @@ const Addform = ({ }) => {
     axios.defaults.withCredentials = true;
     axios.get(`${baseUrl}/users/authUserName`).then((res) => {
       if (res.data === "please login") {
-        return;
+        return toast.dark("hello");
       }
        else {
         setuserData(res.data);
