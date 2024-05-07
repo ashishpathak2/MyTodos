@@ -23,9 +23,6 @@ const Addform = ({ }) => {
 
 
 
-  const logout =  () => {
-     axios.get(`${baseUrl}/users/logout`);
-  }
 
 
   const googleloggedUser = () => {
@@ -47,14 +44,18 @@ const Addform = ({ }) => {
 
   const handleClick = () => {
     if (!userData) setIsOpen(true);
-    else {
-      setuserData(null)
+    else {  
       logout();
-      localStorage.setItem("loggedInUser", "")
-      window.location.href = "https://my-todos-1koj.vercel.app";
-
     };
   }
+
+  const logout =  () => {
+    axios.get(`${baseUrl}/users/logout`);
+    setuserData(null)
+    localStorage.setItem("loggedInUser", "")
+    window.location.href = "https://my-todos-1koj.vercel.app";
+ }
+
 
   useEffect(() => {
     googleloggedUser();

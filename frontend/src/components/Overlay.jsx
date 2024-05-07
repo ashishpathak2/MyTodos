@@ -25,8 +25,8 @@ function Overlay() {
       <SignupFrom/>
 
 
-      {loggedInUser && loggedInUser.length > 0 &&
-       todos &&
+      {/* {loggedInUser.length > 0 && */}
+       {todos &&
         todos.length > 0 ? todos.map((e,index) => (
 
           <Cards data={e} reference={newref}  key={index} />
