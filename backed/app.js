@@ -26,15 +26,15 @@ app.use(cors({
   credentials:true
 }));
 app.use(cookieParser());
-// app.set("trust proxy", 1);
+app.set("trust proxy", 1);
 app.use(Session({
   resave:false,
   saveUninitialized:false,
   secret:"heyashishhere",
   cookie:{
-    secure:true,
+    secure:false,
     // httpOnly: false ,
-    sameSite:"none",
+    // sameSite:"none",
     maxAge:24*60*60*1000,
   },
   // store:monogoStore.create({
