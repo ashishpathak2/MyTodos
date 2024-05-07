@@ -19,7 +19,7 @@ const Addform = () => {
   const [timeRemaining, setTimeRemaining] = useState('');
   const { getTodo } = stateData();
   
-  const postTodo = (data) => {
+  const postTodo =  (data) => {
     axios.post(`${baseUrl}/addtodo`, data)
       .then((res) => {
         if (res.data === "please login") {
@@ -27,7 +27,7 @@ const Addform = () => {
             position: "top-center"
           })
         }
-        getTodo();
+        // getTodo();
       }),
       (error) => {
         console.log(error);
@@ -39,8 +39,10 @@ const handleSubmit =  (e) => {
     e.preventDefault();
     // Handle form submission logic here 
     const newData =  { description, priorityLevel, timeRemaining };
-    postTodo(newData);
-    getTodo();
+    postTodo(newData).then(()=>{
+      getTodo();
+    })
+
    // Clear form fields after submission
     setDescription('');
     setPriority('');
