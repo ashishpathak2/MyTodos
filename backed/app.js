@@ -34,7 +34,7 @@ app.use(Session({
   cookie:{
     secure:true,
     domain:"https://my-todos-1koj.vercel.app",
-    // httpOnly: false ,
+    httpOnly: false ,
     // sameSite:"none",
     maxAge:24*60*60*1000,
   },
