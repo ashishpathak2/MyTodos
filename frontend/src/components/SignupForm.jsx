@@ -49,7 +49,7 @@ const Addform = ({ }) => {
   if(newWindow){
     newWindow.onload = function() {
         loggedUserName();
-        location.reload();
+        // location.reload();
     };
 } else {
     console.error("Failed to open window.");
