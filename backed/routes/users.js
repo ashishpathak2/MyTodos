@@ -55,10 +55,10 @@ router.get("/auth/google",passport.authenticate("google"),function (req,res) {
 
 
 router.get("/authUserName",function(req,res){
-  console.log(req.session.passport.user.username);
+
    res.send(req.session.passport.user.username);
-  // res.redirect("https://my-todos-1koj.vercel.app") 
 })
+
 
 router.post("/register", async function (req, res) {
     try {
@@ -110,13 +110,13 @@ router.post("/register", async function (req, res) {
   })
   
   
-  //FUNCTION FOR PROTECTING ROUTES 
-  function isLoggedIn(req,res,next){
-    if (req.isAuthenticated()) {
-      return next
-    }
-    res.send("please login")
-}
+//   //FUNCTION FOR PROTECTING ROUTES 
+//   function isLoggedIn(req,res,next){
+//     if (req.isAuthenticated()) {
+//       return next
+//     }
+//     res.send("please login")
+// }
 
 
   
