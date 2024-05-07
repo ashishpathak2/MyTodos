@@ -20,7 +20,6 @@ const Addform = ({ }) => {
   const [formType, setFormType] = useState(true)
   const [userData, setuserData] = useState()
   const { getTodo } = stateData();
-  const [isClicked,setIsClicked] = useState(true);
 
 
 
@@ -33,7 +32,7 @@ const Addform = ({ }) => {
         setuserData(res.data);
         localStorage.setItem('loggedInUser', res.data);
         getTodo();
-        setIsClicked(false);
+  
       }
    
      
@@ -41,9 +40,8 @@ const Addform = ({ }) => {
   }
 
   useEffect(() => {
-    if (isClicked === true )  {
       googleloggedUser();
-    }
+    
   }, [])
 
   const handleClick = () => {
@@ -228,7 +226,7 @@ const Addform = ({ }) => {
 
               <p className='text-center text-white pb-2'>OR</p>
               <div className="flex items-center justify-center">
-                <a onClick={()=> setIsClicked(true)} className="bg-white w-full flex items-center justify-center gap-2 p-2 text-center rounded-sm hover:scale-110 transition ease-in-out "
+                <a  className="bg-white w-full flex items-center justify-center gap-2 p-2 text-center rounded-sm hover:scale-110 transition ease-in-out "
                   href="https://mytodosapp-6h9w.onrender.com/users/auth"><FcGoogle size="1.8rem" />Continue with Google</a>
               </div>
 
