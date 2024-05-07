@@ -28,35 +28,36 @@ const Addform = ({ }) => {
   const googleloggedUser = () => {
     axios.defaults.withCredentials = true;
     axios.get(`${baseUrl}/users/authUserName`).then((res) => {
+      if (res.data === "please login") {
+        return;
+      }
       if (res.data) {
         setuserData(res.data);
         localStorage.setItem('loggedInUser', res.data);
         getTodo();
-  
       }
-   
-     
+
     })
   }
 
   useEffect(() => {
-      googleloggedUser();
-    
+    googleloggedUser();
+
   }, [])
 
   const handleClick = () => {
     if (!userData) setIsOpen(true);
-    else {  
+    else {
       logout();
     };
   }
 
-  const logout =  () => {
+  const logout = () => {
     axios.get(`${baseUrl}/users/logout`);
     setuserData(null)
     localStorage.removeItem("loggedInUser")
     window.location.href = "https://my-todos-1koj.vercel.app";
- }
+  }
 
 
   useEffect(() => {
@@ -66,7 +67,7 @@ const Addform = ({ }) => {
     else if (userData) {
       localStorage.setItem("loggedInUser", userData)
     }
-   
+
   }, [userData])
 
 
@@ -226,7 +227,7 @@ const Addform = ({ }) => {
 
               <p className='text-center text-white pb-2'>OR</p>
               <div className="flex items-center justify-center">
-                <a  className="bg-white w-full flex items-center justify-center gap-2 p-2 text-center rounded-sm hover:scale-110 transition ease-in-out "
+                <a className="bg-white w-full flex items-center justify-center gap-2 p-2 text-center rounded-sm hover:scale-110 transition ease-in-out "
                   href="https://mytodosapp-6h9w.onrender.com/users/auth"><FcGoogle size="1.8rem" />Continue with Google</a>
               </div>
 
