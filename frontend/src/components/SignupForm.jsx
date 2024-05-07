@@ -27,9 +27,9 @@ const Addform = ({ }) => {
     axios.get(`${baseUrl}/users/logout`)
   }
 
-  const loggedUserName = async () => {
+  const loggedUserName = () => {
     axios.defaults.withCredentials = true ;
-    await axios.get(`${baseUrl}/users/authUserName`).then((res)=>{
+    axios.get(`${baseUrl}/users/authUserName`).then((res)=>{
       localStorage.setItem('loggedInUser', res.data);
     })
     return "success";
