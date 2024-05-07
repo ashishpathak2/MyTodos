@@ -48,6 +48,7 @@ const Addform = ({ }) => {
 
   if(newWindow){
     newWindow.onload = function() {
+      console.log(newWindow);
         loggedUserName();
         // location.reload();
     };
