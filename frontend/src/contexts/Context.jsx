@@ -48,7 +48,7 @@ export default function Context({ children }) {
       getTodo();
     }
 
-  }, [])
+  }, [loggedInUser])
 
 
 

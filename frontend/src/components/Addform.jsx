@@ -103,7 +103,7 @@ const handleSubmit =  (e) => {
               <div className="flex justify-around">
                 <button
                   type="submit"
-                  className="bg-zinc-700 text-white py-2 px-4 rounded rounded hover:bg-gray-600  focus:outline-none focus:bg-blue-600"
+                  className="bg-zinc-700 text-white py-2 px-4 rounded hover:bg-gray-600  focus:outline-none focus:bg-blue-600"
                 >
                   Submit
                 </button>
