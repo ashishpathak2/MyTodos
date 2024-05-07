@@ -37,14 +37,9 @@ const Addform = ({ }) => {
     })
   }
 
-  const googleHandler = () => {
-   window.open("https://mytodosapp-6h9w.onrender.com/users/auth","_self")
-   
-  }
-
-  useEffect(()=>{
+  useEffect(() => {
     googleloggedUser()
-  },[])
+  }, [])
 
   const handleClick = () => {
     if (!userData) setIsOpen(true);
@@ -221,18 +216,11 @@ const Addform = ({ }) => {
 
               </form>
 
-              {/* <div className="flex items-center justify-center">
-                <button className="bg-white w-60 flex items-center justify-center gap-2 p-2 text-center rounded-sm hover:scale-110 transition ease-in-out "
-                  onClick={() => googleHandler()}><FcGoogle size="1.8rem" />Continue with Google</button>
-              </div> */}
-
               <p className='text-center text-white pb-2'>OR</p>
               <div className="flex items-center justify-center">
-                  <a className="bg-white w-60 flex items-center justify-center gap-2 p-2 text-center rounded-sm hover:scale-110 transition ease-in-out "
-                    href="https://mytodosapp-6h9w.onrender.com/users/auth"><FcGoogle size="1.8rem" />Continue with Google</a>
-                </div>
-                
-
+                <a className="bg-white w-60 flex items-center justify-center gap-2 p-2 text-center rounded-sm hover:scale-110 transition ease-in-out "
+                  href="https://mytodosapp-6h9w.onrender.com/users/auth"><FcGoogle size="1.8rem" />Continue with Google</a>
+              </div>
 
 
             </div>
