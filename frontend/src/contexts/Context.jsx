@@ -16,7 +16,7 @@ export default function Context({ children }) {
 
   const [todos, setTodos] = useState([]);
   const loggedInUser = localStorage.getItem('loggedInUser')
-  console.log(loggedInUser);
+
 
 
   //Fetching Data from database of all products
@@ -24,9 +24,9 @@ export default function Context({ children }) {
   const getTodo = async () => {
    await axios.get(`${baseUrl}/todo`)
       .then((res) => {
-        if (res.data === "please login") {
-          return;
-        }
+        // if (res.data === "please login") {
+        //   return;
+        // }
         setTodos(res.data)
       }),
       (error) => {

@@ -16,9 +16,6 @@ function Overlay() {
   const loggedInUser = localStorage.getItem('loggedInUser')
 
 
-    console.log(todos);
- 
-
   
 
   return (

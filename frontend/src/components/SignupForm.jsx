@@ -24,10 +24,10 @@ const Addform = ({ }) => {
 
 
   const logout = async () => {
-    await axios.get(`${baseUrl}/users/logout`)
-    // location.reload()
-      window.location.href = "https://my-todos-1koj.vercel.app"
+    await axios.get(`${baseUrl}/users/logout`);
+    window.location.href = "https://my-todos-1koj.vercel.app";
   }
+
 
   const googleloggedUser = () => {
     axios.defaults.withCredentials = true;
@@ -78,8 +78,6 @@ const Addform = ({ }) => {
           })
 
           setuserData(res.data);
-          // localStorage.setItem("loggedInUser", userData)
-
         }),
         (error) => {
           console.log(error);
@@ -107,7 +105,7 @@ const Addform = ({ }) => {
 
       } catch {
         if (AxiosError) {
-          toast.dark("Please Register", {
+          toast.dark("Invalid Credentials", {
             position: "top-center"
           })
         }
@@ -202,13 +200,13 @@ const Addform = ({ }) => {
                 <div className="flex justify-between mt-4">
                   <button
                     type="submit"
-                    className="bg-zinc-700 text-white py-2 px-4 rounded hover:bg-gray-600  focus:outline-none focus:bg-blue-600"
+                    className="bg-zinc-700 text-white py-2 px-6 rounded hover:bg-gray-600  focus:outline-none focus:bg-blue-600"
                   >
                     Submit
                   </button>
                   <button
                     type="button"
-                    className="bg-zinc-700 text-white py-2 px-5  rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-400"
+                    className="bg-zinc-700 text-white py-2 px-6 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-400"
                     onClick={() => setIsOpen(false)}
                   >
                     Close
@@ -219,7 +217,7 @@ const Addform = ({ }) => {
 
               <p className='text-center text-white pb-2'>OR</p>
               <div className="flex items-center justify-center">
-                <a className="bg-white w-60 flex items-center justify-center gap-2 p-2 text-center rounded-sm hover:scale-110 transition ease-in-out "
+                <a className="bg-white w-full flex items-center justify-center gap-2 p-2 text-center rounded-sm hover:scale-110 transition ease-in-out "
                   href="https://mytodosapp-6h9w.onrender.com/users/auth"><FcGoogle size="1.8rem" />Continue with Google</a>
               </div>
 
