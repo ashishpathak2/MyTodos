@@ -25,6 +25,7 @@ const Addform = ({ }) => {
 
   const logout = () => {
     axios.get(`${baseUrl}/users/logout`)
+    location.reload()
   }
 
   const loggedUserName = () => {
