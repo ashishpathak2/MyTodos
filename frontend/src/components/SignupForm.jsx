@@ -20,7 +20,7 @@ const Addform = ({ }) => {
   const [formType, setFormType] = useState(true)
   const [userData, setuserData] = useState()
   const { getTodo } = stateData();
-  const [isClicked,setIsClicked] = useState(false);
+  const [isClicked,setIsClicked] = useState(true);
 
 
 
