@@ -31,9 +31,13 @@ const Addform = ({ }) => {
   const googleloggedUser = () => {
     axios.defaults.withCredentials = true;
     axios.get(`${baseUrl}/users/authUserName`).then((res) => {
-      setuserData(res.data);
-      localStorage.setItem('loggedInUser', res.data);
-      getTodo();
+      if (res.data) {
+        setuserData(res.data);
+        localStorage.setItem('loggedInUser', res.data);
+        getTodo();
+      }
+   
+     
     })
   }
 
