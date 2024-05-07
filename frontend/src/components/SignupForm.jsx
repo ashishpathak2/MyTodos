@@ -28,14 +28,13 @@ const Addform = ({ }) => {
     location.reload()
   }
 
-  const loggedUserName = () => {
+  const googleloggedUser = () => {
     axios.defaults.withCredentials = true;
     axios.get(`${baseUrl}/users/authUserName`).then((res) => {
       setuserData(res.data);
       localStorage.setItem('loggedInUser', res.data);
-      getTodo();
+      // getTodo();
     })
-    return "success";
   }
 
   const googleHandler = () => {
@@ -44,7 +43,7 @@ const Addform = ({ }) => {
   }
 
   useEffect(()=>{
-    loggedUserName()
+    googleloggedUser()
   },[])
 
   const handleClick = () => {
