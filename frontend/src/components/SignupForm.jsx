@@ -49,7 +49,7 @@ const Addform = ({ }) => {
   if(newWindow){
     newWindow.onload = function() {
         loggedUserName();
-        window.location.href ="https://my-todos-1koj.vercel.app" 
+        location.reload();
     };
 } else {
     console.error("Failed to open window.");
