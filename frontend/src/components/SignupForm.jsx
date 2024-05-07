@@ -30,6 +30,7 @@ const Addform = ({ }) => {
   const loggedUserName = () => {
     axios.defaults.withCredentials = true;
     axios.get(`${baseUrl}/users/authUserName`).then((res) => {
+      setuserData(res.data);
       localStorage.setItem('loggedInUser', res.data);
     })
     return "success";
