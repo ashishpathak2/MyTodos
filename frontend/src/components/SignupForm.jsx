@@ -57,7 +57,7 @@ const Addform = ({ }) => {
   }
 
   useEffect(()=>{
-    loggedUserName();
+    loggedUserName()
   },[])
 
   const handleClick = () => {
