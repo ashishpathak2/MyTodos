@@ -43,13 +43,14 @@ const Addform = ({ }) => {
      
   // }
 
-  const googleHandler = async ()=>{
-   window.open("https://mytodosapp-6h9w.onrender.com/users/auth","_self")
-   axios.defaults.withCredentials = true ;
-   await axios.get(`${baseUrl}/users/auth/google`).then((res)=>{
-    console.log(res);
-  })
-    
+  const googleHandler = ()=>{
+   window.open("https://mytodosapp-6h9w.onrender.com/users/auth","_self", (error,newWindow)=>{
+    if (error) {
+      console.log(error);
+    } else {
+      loggedUserName();
+    }
+   })
   }
 
   const handleClick = () => {
