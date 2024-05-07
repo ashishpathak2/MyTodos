@@ -44,11 +44,9 @@ const Addform = ({ }) => {
   // }
 
   const googleHandler = ()=>{
-    window.onload =function (){
-      loggedUserName();
-    }
-
-//   var newWindow = window.open("https://mytodosapp-6h9w.onrender.com/users/auth");
+  var newWindow = window.open("https://mytodosapp-6h9w.onrender.com/users/auth").then(()=>{
+    loggedUserName();
+  })
 
 //   if(newWindow){
 //     newWindow.onload = function() {
