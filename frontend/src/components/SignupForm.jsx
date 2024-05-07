@@ -31,7 +31,7 @@ const Addform = ({ }) => {
       if (res.data === "please login") {
         return;
       }
-      if (res.data) {
+       else {
         setuserData(res.data);
         localStorage.setItem('loggedInUser', res.data);
         getTodo();
