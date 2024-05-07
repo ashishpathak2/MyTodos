@@ -22,9 +22,12 @@ const Addform = () => {
   const postTodo = (data) => {
     axios.post(`${baseUrl}/addtodo`, data)
       .then((res) => {
-        if (res.data === "please login") toast.dark("Please login",{
-          position: "top-center"
-        })
+        if (res.data === "please login") {
+          return  toast.dark("Please login",{
+            position: "top-center"
+          })
+        }
+        getTodo();
       }),
       (error) => {
         console.log(error);
@@ -32,7 +35,7 @@ const Addform = () => {
   };
  
   
-const handleSubmit = (e) => {
+const handleSubmit =  (e) => {
     e.preventDefault();
     // Handle form submission logic here 
     const newData =  { description, priorityLevel, timeRemaining };
