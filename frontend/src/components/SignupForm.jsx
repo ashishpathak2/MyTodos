@@ -44,7 +44,7 @@ const Addform = ({ }) => {
     if (isClicked === true )  {
       googleloggedUser();
     }
-  }, [isClicked])
+  }, [])
 
   const handleClick = () => {
     if (!userData) setIsOpen(true);
