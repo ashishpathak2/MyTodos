@@ -27,7 +27,7 @@ const Addform = () => {
             position: "top-center"
           })
         }
-        
+        getTodo();
       }),
       (error) => {
         console.log(error);
@@ -38,11 +38,12 @@ const Addform = () => {
 const handleSubmit =  (e) => {
     e.preventDefault();
     postTodo( { description, priorityLevel, timeRemaining } );
+    getTodo();
     setDescription('');
     setPriority('');
     setTimeRemaining('');
     setIsOpen(false);
-    getTodo();
+    
  };
  
 
