@@ -19,7 +19,7 @@ const Addform = () => {
   const [timeRemaining, setTimeRemaining] = useState('');
   const { getTodo ,setTodos} = stateData();
   
-  const postTodo =  (data) => {
+  const postTodo = (data) => {
      axios.post(`${baseUrl}/addtodo`, data)
       .then((res) => {
         if (res.data === "please login") {
@@ -28,7 +28,6 @@ const Addform = () => {
           })
         }
         getTodo();
-        // setTodos(todos => ({ ...todos, ...res.data }));
       }),
       (error) => {
         console.log(error);
