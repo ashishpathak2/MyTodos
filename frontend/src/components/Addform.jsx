@@ -27,7 +27,7 @@ const Addform = () => {
             position: "top-center"
           })
         }
-        setTodos(todos =>( {...todos + res.data } ));
+        setTodos(todos => ({ ...todos, ...res.data }));
       }),
       (error) => {
         console.log(error);
