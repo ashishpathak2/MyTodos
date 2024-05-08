@@ -20,8 +20,7 @@ const Addform = ({ }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [formType, setFormType] = useState(true)
-  const [userData, setuserData] = useState()
-  const { getTodo, setTodos } = stateData();
+  const { getTodo, setTodos , userData, setuserData } = stateData();
 
 
 
