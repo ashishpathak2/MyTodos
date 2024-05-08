@@ -13,7 +13,7 @@ router.get('/todo',isLoggedIn, async function (req, res) {
     });
 });
 
-router.post("/addtodo",isLoggedIn,async function (req, res) {
+router.post("/addtodo",isLoggedIn,function (req, res) {
   try {
     
     var todo = new todoItems({
@@ -23,11 +23,8 @@ router.post("/addtodo",isLoggedIn,async function (req, res) {
       timeRemaining: req.body.timeRemaining
     });
   
-   await todo.save();
-  //  await todoItems.find({CreatedByuserId : req.session.passport.user._id}).
-  //  then((result) => {
-   res.send(todo).status(200)
-  //  })
+   todo.save();
+   res.send(todo).status(200);
 
   } catch (error) {
     console.log(error);
