@@ -23,7 +23,7 @@ passport.use(new googlePassport({
         googleID:profile.id,
         email:profile._json.email,
         username:profile.displayName
-      }).save().then((newUser)=>{
+      }).save().then((newUser)=>{ 
         done(null,newUser)
       })
     
