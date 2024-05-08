@@ -17,10 +17,10 @@ const Addform = () => {
   const [description, setDescription] = useState('');
   const [priorityLevel, setPriority] = useState('');
   const [timeRemaining, setTimeRemaining] = useState('');
-  const { getTodo ,setTodos,todos} = stateData();
+  const { getTodo ,setTodos} = stateData();
   
-  const postTodo = async (data) => {
-    await axios.post(`${baseUrl}/addtodo`, data)
+  const postTodo =  (data) => {
+     axios.post(`${baseUrl}/addtodo`, data)
       .then((res) => {
         if (res.data === "please login") {
           return  toast.dark("Please login",{
