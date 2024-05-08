@@ -9,7 +9,9 @@ const StateItems = createContext({
   todos: [],
   setTodos: () => { },
   getTodo: () => { },
-  loggedInUser:""
+  userData:{}, 
+  setuserData:()=>{}
+
 
 });
 
@@ -17,7 +19,7 @@ export default function Context({ children }) {
 
   const [todos, setTodos] = useState([]);
   const loggedInUser = localStorage.getItem('loggedInUser')
-
+  const [userData, setuserData] = useState()
 
 
 
@@ -41,6 +43,7 @@ export default function Context({ children }) {
 
   useEffect(() => {
     if (loggedInUser && loggedInUser.length > 0) {
+      setuserData(loggedInUser);
       getTodo();
     }
 
@@ -49,7 +52,7 @@ export default function Context({ children }) {
 
 
   return (
-    <StateItems.Provider value={{ todos, setTodos, getTodo , loggedInUser }}>
+    <StateItems.Provider value={{ todos, setTodos, getTodo,userData, setuserData  }}>
       {children}
     </StateItems.Provider>
   )
