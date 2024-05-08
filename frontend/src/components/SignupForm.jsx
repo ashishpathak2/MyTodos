@@ -19,7 +19,7 @@ const Addform = ({ }) => {
   const [password, setPassword] = useState('');
   const [formType, setFormType] = useState(true)
   const [userData, setuserData] = useState()
-  const { getTodo } = stateData();
+  const { getTodo,setTodos } = stateData();
 
 
 
@@ -51,6 +51,7 @@ const Addform = ({ }) => {
 
   const logout = () => {
     axios.get(`${baseUrl}/users/logout`);
+    setTodos(null);
     setuserData(null)
     localStorage.removeItem("loggedInUser")
     // window.location.href = "https://my-todos-1koj.vercel.app";
