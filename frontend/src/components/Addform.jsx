@@ -17,7 +17,7 @@ const Addform = () => {
   const [description, setDescription] = useState('');
   const [priorityLevel, setPriority] = useState('');
   const [timeRemaining, setTimeRemaining] = useState('');
-  const { getTodo } = stateData();
+  const { getTodo ,setTodos,todos} = stateData();
   
   const postTodo = async (data) => {
     await axios.post(`${baseUrl}/addtodo`, data)
@@ -27,7 +27,7 @@ const Addform = () => {
             position: "top-center"
           })
         }
-        getTodo();
+        setTodos(todos)
       }),
       (error) => {
         console.log(error);
@@ -37,8 +37,9 @@ const Addform = () => {
   
 const handleSubmit =  (e) => {
     e.preventDefault();
-    postTodo( { description, priorityLevel, timeRemaining } );
     getTodo();
+    postTodo( { description, priorityLevel, timeRemaining } );
+   
     setDescription('');
     setPriority('');
     setTimeRemaining('');
