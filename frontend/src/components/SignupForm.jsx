@@ -37,11 +37,6 @@ const Addform = ({ }) => {
     })
   }
 
-  useEffect(() => {
-    googleloggedUser();
-
-  }, [])
-
   const handleClick = () => {
     if (!userData) setIsOpen(true);
     else {
@@ -54,11 +49,11 @@ const Addform = ({ }) => {
     setTodos(null);
     setuserData(null)
     localStorage.removeItem("loggedInUser")
-    // window.location.href = "https://my-todos-1koj.vercel.app";
   }
 
 
   useEffect(() => {
+    googleloggedUser();
     if (localStorage.getItem("loggedInUser")) {
       setuserData(localStorage.getItem("loggedInUser"))
     }
