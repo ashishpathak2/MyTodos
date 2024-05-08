@@ -9,6 +9,7 @@ const StateItems = createContext({
   todos: [],
   setTodos: () => { },
   getTodo: () => { },
+  loggedInUser:""
 
 });
 
@@ -16,6 +17,7 @@ export default function Context({ children }) {
 
   const [todos, setTodos] = useState([]);
   const loggedInUser = localStorage.getItem('loggedInUser')
+
 
 
 
@@ -47,7 +49,7 @@ export default function Context({ children }) {
 
 
   return (
-    <StateItems.Provider value={{ todos, setTodos, getTodo }}>
+    <StateItems.Provider value={{ todos, setTodos, getTodo , loggedInUser }}>
       {children}
     </StateItems.Provider>
   )

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { IoMdAdd } from "react-icons/io";
 import { stateData } from '../contexts/Context';
 import axios from 'axios';
@@ -17,13 +17,14 @@ const Addform = () => {
   const [description, setDescription] = useState('');
   const [priorityLevel, setPriority] = useState('');
   const [timeRemaining, setTimeRemaining] = useState('');
-  const { getTodo} = stateData();
-  
+  const { getTodo, loggedInUser } = stateData();
+  const [btn, setBtn] = useState(null);
+
   const postTodo = (data) => {
-     axios.post(`${baseUrl}/addtodo`, data)
+    axios.post(`${baseUrl}/addtodo`, data)
       .then((res) => {
         if (res.data === "please login") {
-          return  toast.dark("Please login",{
+          return toast.dark("Please login", {
             position: "top-center"
           })
         }
@@ -33,28 +34,33 @@ const Addform = () => {
         console.log(error);
       };
   };
- 
-  
-const handleSubmit =  (e) => {
+
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    postTodo( { description, priorityLevel, timeRemaining } );
+    postTodo({ description, priorityLevel, timeRemaining });
     setDescription('');
     setPriority('');
     setTimeRemaining('');
     setIsOpen(false);
-    
- };
- 
+
+  };
+  useEffect(() => {
+    setBtn(() => {
+      return (
+        <button onClick={e => setIsOpen(true)}
+          className="text-white w-14 h-14 absolute left-5 top-5  hover:scale-125 hover:transition ease-in-out bg-zinc-900 rounded-full hover:bg-blue-600 grid place-items-center">
+          <IoMdAdd /></button>
+      )
+    })
+  }, [loggedInUser])
+
 
 
   return (
     <div className="">
 
-      { localStorage.getItem("loggedInUser") && 
-        <button onClick={e => setIsOpen(true)}
-          className="text-white w-14 h-14 absolute left-5 top-5  hover:scale-125 hover:transition ease-in-out bg-zinc-900 rounded-full hover:bg-blue-600 grid place-items-center">
-            <IoMdAdd /></button>
-}
+      { btn }
 
       {isOpen && (
         <div className=" fixed top-0 left-0 w-full h-full flex justify-center items-center bg-zinc-800 bg-opacity-60 z-50 ">
@@ -77,7 +83,7 @@ const handleSubmit =  (e) => {
                   id="priority"
                   className=" text-white border-transparent bg-zinc-700 w-full border border-gray-300 rounded px-3 py-2 "
                   // value={priority}
-                  onChange={(e) => setPriority(e.target.value)} 
+                  onChange={(e) => setPriority(e.target.value)}
                   required
                 >
                   <option value="">Select Priority</option>
