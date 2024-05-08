@@ -24,10 +24,10 @@ router.post("/addtodo",isLoggedIn,async function (req, res) {
     });
   
    await todo.save();
-   await todoItems.find({CreatedByuserId : req.session.passport.user._id}).
-   then((result) => {
-   res.send(result).status(200)
-   })
+  //  await todoItems.find({CreatedByuserId : req.session.passport.user._id}).
+  //  then((result) => {
+   res.send(todo).status(200)
+  //  })
 
   } catch (error) {
     console.log(error);
