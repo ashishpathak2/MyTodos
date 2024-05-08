@@ -50,10 +50,11 @@ const handleSubmit =  (e) => {
   return (
     <div className="">
 
-      <div className='w-14 h-14 absolute left-0  hover:scale-125 hover:transition ease-in-out bg-zinc-900 rounded-[50px] hover:bg-blue-600 mt-5 ml-5 flex justify-center  focus:outline-none focus:bg-blue-600'>
+      { localStorage.getItem("loggedInUser") && 
         <button onClick={e => setIsOpen(true)}
-          className="text-white"><IoMdAdd /></button>
-      </div>
+          className="text-white w-14 h-14 absolute left-5 top-5  hover:scale-125 hover:transition ease-in-out bg-zinc-900 rounded-full hover:bg-blue-600 grid place-items-center">
+            <IoMdAdd /></button>
+}
 
       {isOpen && (
         <div className=" fixed top-0 left-0 w-full h-full flex justify-center items-center bg-zinc-800 bg-opacity-60 z-50 ">

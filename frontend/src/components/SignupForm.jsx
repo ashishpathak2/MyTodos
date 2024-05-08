@@ -7,6 +7,8 @@ import { VscAccount } from "react-icons/vsc";
 import { FcGoogle } from "react-icons/fc";
 import { stateData } from '../contexts/Context';
 import { baseUrl } from '../utils';
+import { IoClose } from "react-icons/io5";
+
 
 
 
@@ -19,7 +21,7 @@ const Addform = ({ }) => {
   const [password, setPassword] = useState('');
   const [formType, setFormType] = useState(true)
   const [userData, setuserData] = useState()
-  const { getTodo,setTodos } = stateData();
+  const { getTodo, setTodos } = stateData();
 
 
 
@@ -28,7 +30,7 @@ const Addform = ({ }) => {
   const googleloggedUser = () => {
     axios.defaults.withCredentials = true;
     axios.get(`${baseUrl}/users/authUserName`).then((res) => {
-    if (res.data) {
+      if (res.data) {
         setuserData(res.data);
         localStorage.setItem('loggedInUser', res.data);
         getTodo();
@@ -54,16 +56,16 @@ const Addform = ({ }) => {
 
 
   useEffect(() => {
-    
+
     if (localStorage.getItem("loggedInUser")) {
       setuserData(localStorage.getItem("loggedInUser"))
     }
     else if (userData) {
       localStorage.setItem("loggedInUser", userData)
 
-    }else{
+    } else {
       googleloggedUser();
-     }
+    }
 
   }, [])
 
@@ -154,10 +156,14 @@ const Addform = ({ }) => {
       </button>
 
 
+
       {
         isOpen && (
           <div className="fixed left-[50%] top-[50%] translate-y-[-50%] translate-x-[-50%]  bg-zinc-800 bg-opacity-60 z-50 ">
-            <div className=" w-[90%] sm:w-[30rem] bg-zinc-900 p-8 rounded-[1.5rem] bg-opacity-85 ">
+            <div className=" flex flex-col w-[90%] sm:w-[30rem] bg-zinc-900 p-8 pt-4  rounded-[1.5rem] bg-opacity-85 ">
+            <button type="button" className=" mb-6 p-2 transition border border-zinc-600 rounded-full  hover:bg-zinc-700 text-white ml-auto" onClick={() => setIsOpen(false)}>
+              <IoClose size={"1.3rem"} />
+            </button>
               <div className="formselect flex justify-between items-center mb-4">
                 <h2 className=" text-white text-2xl font-semibold ">{formType ? "Register" : "LOGIN"}</h2>
                 <div className='text-white text-opacity-70 text-sm flex items-center gap-x-2'>
@@ -169,7 +175,7 @@ const Addform = ({ }) => {
                 </div>
               </div>
 
-              <form onSubmit={handleSubmit} >
+              <form className='flex flex-col mb-4' onSubmit={handleSubmit} >
                 <div className="mb-4">
                   <label htmlFor="username" className="block text-sm font-medium text-white mb-2">Username</label>
                   <input
@@ -204,25 +210,19 @@ const Addform = ({ }) => {
                   />
                 </div>
 
-                <div className="flex justify-between mt-4">
+                
                   <button
                     type="submit"
-                    className="bg-zinc-700 text-white py-2 px-6 rounded hover:bg-gray-600  focus:outline-none focus:bg-blue-600"
+                    className="bg-green-500 text-white py-2 px-6  min-w-[150px] rounded hover:scale-110 transition ease-in-out focus:outline-none focus:bg-zinc-200 focus:text-zinc-800"
                   >
                     Submit
                   </button>
-                  <button
-                    type="button"
-                    className="bg-zinc-700 text-white py-2 px-6 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-400"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    Close
-                  </button>
-                </div>
+
+                
 
               </form>
 
-              <p className='text-center text-white pb-2'>OR</p>
+              <p className='text-center text-white pb-2 mb-4 '>OR</p>
               <div className="flex items-center justify-center">
                 <a className="bg-white w-full flex items-center justify-center gap-2 p-2 text-center rounded-sm hover:scale-110 transition ease-in-out "
                   href="https://mytodosapp-6h9w.onrender.com/users/auth"><FcGoogle size="1.8rem" />Continue with Google</a>
