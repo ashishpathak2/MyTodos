@@ -28,7 +28,7 @@ const Addform = () => {
           })
         }
         console.log(res.data);
-        setTodos(res.data);
+        // setTodos(res.data);
       }),
       (error) => {
         console.log(error);
