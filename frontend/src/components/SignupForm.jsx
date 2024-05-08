@@ -53,7 +53,7 @@ const Addform = ({ }) => {
     axios.get(`${baseUrl}/users/logout`);
     setuserData(null)
     localStorage.removeItem("loggedInUser")
-    window.location.href = "https://my-todos-1koj.vercel.app";
+    // window.location.href = "https://my-todos-1koj.vercel.app";
   }
 
 
