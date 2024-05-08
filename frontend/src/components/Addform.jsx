@@ -19,8 +19,8 @@ const Addform = () => {
   const [timeRemaining, setTimeRemaining] = useState('');
   const { getTodo } = stateData();
   
-  const postTodo = (data) => {
-     axios.post(`${baseUrl}/addtodo`, data)
+  const postTodo = async (data) => {
+    await axios.post(`${baseUrl}/addtodo`, data)
       .then((res) => {
         if (res.data === "please login") {
           return  toast.dark("Please login",{
@@ -81,7 +81,7 @@ const handleSubmit =  (e) => {
                   required
                 >
                   <option value="">Select Priority</option>
-                  <option value="1"> Hell Important</option>
+                  <option value="1"> Very Urgent </option>
                   <option value="2"> Very Important</option>
                   <option value="3"> Important</option>
                 </select>
