@@ -25,12 +25,12 @@ import { baseUrl } from '../utils';
 function Cards({ data, reference }) {
     const [check, setCheck] = useState(false);
     const [isTodoEdit, setTodoEdit] = useState(false);
-    const [description,setDescription] =useState("");
-    const [editId,setEditId] = useState(0);
+    const [description, setDescription] = useState("");
+    const [editId, setEditId] = useState(0);
 
     const { getTodo } = stateData();
     const list = {
-        1: { className: " bg-red-800 ", title: "Hell Important" },
+        1: { className: " bg-red-800 ", title: "Very Urgent" },
         2: { className: " bg-blue-800", title: "Very Important" },
         3: { className: " bg-green-800 ", title: "Important" }
 
@@ -44,15 +44,16 @@ function Cards({ data, reference }) {
 
         axios.delete(`${baseUrl}/deletetodo/${id}`).
             then((res) => {
-                console.log(res.data);
+                if (res.data === "Deleted") {
+                    getTodo();
+                }
             }).catch((error) => {
                 console.log(error);
             })
     }
 
     const handleClose = (id) => {
-        deleteTodo(id)
-        getTodo();
+        deleteTodo(id);
     }
 
     useEffect(() => {
@@ -63,17 +64,19 @@ function Cards({ data, reference }) {
 
     }, [data.timeRemaining])
 
-    const EditTodo = (id,data) => {
+    const EditTodo = (id, data) => {
         axios.put(`${baseUrl}/edittodo/${id}`, data)
             .then((res) => {
-                console.log(res.data);
+                if (res.data === "updated") {
+                    getTodo();
+                }
             }),
             (error) => {
                 console.log(error);
             };
     };
 
-    const handleEdit = (id)=>{
+    const handleEdit = (id) => {
         setTodoEdit(!isTodoEdit);
         setEditId(id)
     }
@@ -81,28 +84,27 @@ function Cards({ data, reference }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         setTodoEdit(!isTodoEdit)
-        EditTodo(editId,{description});
-        getTodo();
+        EditTodo(editId, { description });
     };
-    
+
 
 
     return (
 
-        <motion.div   drag whileHover={{ scale: 1.2 }} dragConstraints={reference} dragTransition={{ bounceStiffness: 500, bounceDamping: 100 }}
+        <motion.div drag whileHover={{ scale: 1.2 }} dragConstraints={reference} dragTransition={{ bounceStiffness: 500, bounceDamping: 100 }}
             className='relative w-48 h-52 bg-zinc-900 rounded-[30px] px-5 py-6 overflow-hidden text-zinc-300 m-5'>
             <div className={`top flex ${isTodoEdit === false ? "justify-between" : "justify-end"}`} >
-                {isTodoEdit === false && <button  className='hover:scale-125 transition ease-in-out' onClick={e => handleEdit(data._id) } > <BiSolidMessageSquareEdit/> </button>}
+                {isTodoEdit === false && <button className='hover:scale-125 transition ease-in-out' onClick={e => handleEdit(data._id)} > <BiSolidMessageSquareEdit /> </button>}
 
-                  <button className='hover:scale-125 transition ease-in-out ' onClick={e => handleClose(data._id)}><IoClose /> </button>
+                <button className='hover:scale-125 transition ease-in-out ' onClick={e => handleClose(data._id)}><IoClose /> </button>
 
             </div>
 
             {isTodoEdit === true ?
-            <form onSubmit={() => handleSubmit}>
-                <input type="text" id="description" className=" text-white border-transparent bg-zinc-700 w-full border border-gray-300 rounded px-3 py-2 " defaultValue={data.description} onChange={(e) => setDescription(e.target.value)} /> 
-                 <button type='submit' className='pl-1 pt-1 hover:scale-125 transition ease-in-out'><RxUpdate size="1.1rem"/></button>
-            </form>
+                <form onSubmit={() => handleSubmit}>
+                    <input type="text" id="description" className=" text-white border-transparent bg-zinc-700 w-full border border-gray-300 rounded px-3 py-2 " defaultValue={data.description} onChange={(e) => setDescription(e.target.value)} />
+                    <button type='submit' className='pl-1 pt-1 hover:scale-125 transition ease-in-out'><RxUpdate size="1.1rem" /></button>
+                </form>
                 : <p className={`text-sm font-semibold leading-tight text-left mt-3 ${check === true ? "decoration-[1.5px] line-through" : ""}`}>{data.description}</p>
             }
 
@@ -120,7 +122,7 @@ function Cards({ data, reference }) {
 
 
 
-                    <button className='hover:scale-125 transition ease-in-out' onClick={() => setCheck(!check)} >{check === true ? <ImCheckboxChecked size="0.9rem"/> : <ImCheckboxUnchecked size="0.9rem" />}</button>
+                    <button className='hover:scale-125 transition ease-in-out' onClick={() => setCheck(!check)} >{check === true ? <ImCheckboxChecked size="0.9rem" /> : <ImCheckboxUnchecked size="0.9rem" />}</button>
 
                 </div>
                 <div className={`importance w-full py-2  ${list[parseInt(data.priorityLevel)].className} text-center`}>
