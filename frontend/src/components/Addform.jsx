@@ -17,7 +17,7 @@ const Addform = () => {
   const [description, setDescription] = useState('');
   const [priorityLevel, setPriority] = useState('');
   const [timeRemaining, setTimeRemaining] = useState('');
-  const { getTodo ,setTodos} = stateData();
+  const { getTodo} = stateData();
   
   const postTodo = (data) => {
      axios.post(`${baseUrl}/addtodo`, data)
