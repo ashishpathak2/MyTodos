@@ -66,7 +66,7 @@ const Addform = ({ }) => {
       localStorage.setItem("loggedInUser", userData)
     }
 
-  }, [userData])
+  }, [])
 
 
   const registerUser = async (data) => {
