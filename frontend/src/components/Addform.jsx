@@ -46,7 +46,7 @@ const Addform = () => {
 
   };
   useEffect(() => {
-    if (loggedInUser.length > 0) {
+    if (loggedInUser && loggedInUser.length > 0) {
 
       setBtn(() => {
         return (
