@@ -37,9 +37,8 @@ const Addform = () => {
   
 const handleSubmit =  (e) => {
     e.preventDefault();
-    getTodo();
     postTodo( { description, priorityLevel, timeRemaining } );
-   
+    getTodo();
     setDescription('');
     setPriority('');
     setTimeRemaining('');
