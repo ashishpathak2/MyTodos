@@ -96,6 +96,8 @@ const Addform = ({ }) => {
         const res = await axios.post(`${baseUrl}/users/login`, data);
   
         if (res.data) {
+          console.log(res.data);
+          
           getTodo(); // Assuming this function fetches some user-related data after login
           setuserData(res.data);
   
