@@ -14,7 +14,7 @@ passport.use(new passportLocal( usersModel.authenticate() ));
 
 
 passport.use(new googlePassport({
-  callbackURL:"https://mytodosapp-6h9w.onrender.com/users/auth/google",
+  callbackURL:"https://mytodos-3gmr.onrender.com/users/auth/google",
   clientID:"95363308184-nebmo0nlt7n0ivqen9g4ttv7bqga8p80.apps.googleusercontent.com",
   clientSecret:"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"
 },(accessToken,refreshToken,profile,done)=>{
