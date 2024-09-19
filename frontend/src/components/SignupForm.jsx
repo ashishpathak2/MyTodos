@@ -24,17 +24,17 @@ const Addform = ({ }) => {
 
 
 
-  const googleloggedUser = () => {
-    axios.defaults.withCredentials = true;
-    axios.get(`${baseUrl}/users/authUserName`).then((res) => {
-      if (res.data) {
-        setuserData(res.data);
-        localStorage.setItem('loggedInUser', res.data);
-        getTodo();
-      }
+  // const googleloggedUser = () => {
+  //   axios.defaults.withCredentials = true;
+  //   axios.get(`${baseUrl}/users/authUserName`).then((res) => {
+  //     if (res.data) {
+  //       setuserData(res.data);
+  //       localStorage.setItem('loggedInUser', res.data);
+  //       getTodo();
+  //     }
 
-    })
-  }
+  //   })
+  // }
 
 
   const handleClick = () => {
@@ -60,9 +60,10 @@ const Addform = ({ }) => {
     else if (userData) {
       localStorage.setItem("loggedInUser", userData)
 
-    } else {
-      googleloggedUser();
-    }
+    } 
+    // else {
+    //   googleloggedUser();
+    // }
 
   }, [])
 
@@ -220,11 +221,11 @@ const Addform = ({ }) => {
 
               </form>
 
-              <p className='text-center text-white pb-2 mb-4 '>OR</p>
+              {/* <p className='text-center text-white pb-2 mb-4 '>OR</p>
               <div className="flex items-center justify-center">
                 <a className="bg-white w-full flex items-center justify-center gap-2 p-2 text-center rounded-sm hover:scale-110 transition ease-in-out "
                   href="https://mytodos-3gmr.onrender.com/users/auth"><FcGoogle size="1.8rem" />Continue with Google</a>
-              </div>
+              </div> */}
 
 
             </div>
