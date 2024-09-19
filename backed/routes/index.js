@@ -13,7 +13,7 @@ router.get('/todo', async function (req, res) {
     });
 });
 
-router.post("/addtodo",isLoggedIn,function (req, res) {
+router.post("/addtodo",function (req, res) {
   try {
     
     var todo = new todoItems({
