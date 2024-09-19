@@ -67,62 +67,55 @@ const Addform = ({ }) => {
 
   }, [userData])
 
-
   const registerUser = async (data) => {
-
-    if (formType) {
-      axios.defaults.withCredentials = true;
-      await axios.post(`${baseUrl}/users/register`, data)
-        .then((res) => {
-
-          if (res.data === "username already exists") {
-            return toast.dark("username already exists ", {
-              position: "top-center"
-            });
-          }
-          toast.dark("Register Succesfull", {
-            position: "top-center"
-          })
-
-          setuserData(res.data);
-        }),
-        (error) => {
-          console.log(error);
-        };
-    }
-
-    else {
-
+    axios.defaults.withCredentials = true;
+  
+    if (formType) { // Register scenario
       try {
-        axios.defaults.withCredentials = true;
-        await axios.post(`${baseUrl}/users/login`, data)
-          .then((res) => {
-            if (res.data) {
-              getTodo()
-              setuserData(res.data)
-              toast.dark("login successfully", {
-                position: "top-center"
-              })
-            }
-
-          }),
-          (error) => {
-            console.log(error);
-          };
-
-      } catch {
-        if (AxiosError) {
-          toast.dark("Invalid Credentials", {
-            position: "top-center"
-          })
+        const res = await axios.post(`${baseUrl}/users/register`, data);
+  
+        if (res.data === "username already exists") {
+          return toast.dark("Username already exists", {
+            position: "top-center",
+          });
         }
+  
+        toast.dark("Registration Successful", {
+          position: "top-center",
+        });
+  
+        setuserData(res.data);
+      } catch (error) {
+        console.error(error);
+        toast.dark("Registration failed. Please try again.", {
+          position: "top-center",
+        });
       }
-
+    } else { // Login scenario
+      try {
+        const res = await axios.post(`${baseUrl}/users/login`, data);
+  
+        if (res.data) {
+          getTodo(); // Assuming this function fetches some user-related data after login
+          setuserData(res.data);
+  
+          toast.dark("Login successful", {
+            position: "top-center",
+          });
+        } else {
+          toast.dark("Invalid credentials", {
+            position: "top-center",
+          });
+        }
+      } catch (error) {
+        console.error(error);
+        toast.dark("Login failed. Please check your credentials and try again.", {
+          position: "top-center",
+        });
+      }
     }
-
-
   };
-
+  
 
 
   const handleSubmit = (e) => {
