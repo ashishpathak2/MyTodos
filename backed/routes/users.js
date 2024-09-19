@@ -2,48 +2,48 @@ var express = require('express');
 var router = express.Router();
 const usersModel = require("../collections/usersModel");
 const passport = require("passport")
-// const passportLocal = require("passport-local");
-// const googlePassport = require("passport-google-oauth20");
-// const otpGenerator = require('otp-generator')
-// var nodemailer = require('nodemailer');
+const passportLocal = require("passport-local");
+const googlePassport = require("passport-google-oauth20");
+const otpGenerator = require('otp-generator')
+var nodemailer = require('nodemailer');
 
 
 
 
-// passport.use(new passportLocal( usersModel.authenticate() ));
+passport.use(new passportLocal( usersModel.authenticate() ));
 
 
-// passport.use(new googlePassport({
-//   callbackURL:"https://mytodos-3gmr.onrender.com/users/auth/google",
-//   clientID:"95363308184-nebmo0nlt7n0ivqen9g4ttv7bqga8p80.apps.googleusercontent.com",
-//   clientSecret:"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"
-// },(accessToken,refreshToken,profile,done)=>{
-//     usersModel.findOne({googleID:profile.id}).then((currentUser)=>{
-//       if (currentUser) {
-//         return done(null,currentUser)
-//       }
-//       new usersModel({
-//         googleID:profile.id,
-//         email:profile._json.email,
-//         username:profile.displayName
-//       }).save().then((newUser)=>{ 
-//         done(null,newUser)
-//       })
+passport.use(new googlePassport({
+  callbackURL:"https://mytodos-3gmr.onrender.com/users/auth/google",
+  clientID:"95363308184-nebmo0nlt7n0ivqen9g4ttv7bqga8p80.apps.googleusercontent.com",
+  clientSecret:"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"
+},(accessToken,refreshToken,profile,done)=>{
+    usersModel.findOne({googleID:profile.id}).then((currentUser)=>{
+      if (currentUser) {
+        return done(null,currentUser)
+      }
+      new usersModel({
+        googleID:profile.id,
+        email:profile._json.email,
+        username:profile.displayName
+      }).save().then((newUser)=>{ 
+        done(null,newUser)
+      })
     
 
-//     })
+    })
  
-// })
-// )
+})
+)
 
 
-// passport.serializeUser(function(user,done){
-//   done(null,user);
-// })
+passport.serializeUser(function(user,done){
+  done(null,user);
+})
 
-// passport.deserializeUser(function(user,done){
-//   done(null,user)
-// })
+passport.deserializeUser(function(user,done){
+  done(null,user)
+})
 
 
 // router.get("/auth",passport.authenticate("google",{
