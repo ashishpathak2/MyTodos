@@ -6,7 +6,7 @@ const passportLocal = require("passport-local");
 const googlePassport = require("passport-google-oauth20");
 const otpGenerator = require('otp-generator')
 var nodemailer = require('nodemailer');
-var bcrypt = require('bcrypt');
+
 
 
 
