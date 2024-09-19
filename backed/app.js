@@ -21,8 +21,8 @@ app.use(express.json());
 app.use(bodyParser.json());
 
 app.use(cors({
-  // origin:["https://my-todos-1koj.vercel.app"],
-  origin:["http://localhost:5173"],
+  origin:["https://my-todos-1koj.vercel.app"],
+  // origin:["http://localhost:5173"],
   methods:["GET","POST","DELETE","PUT","OPTIONS"],
   credentials:true
 }));
