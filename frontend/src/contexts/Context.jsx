@@ -29,7 +29,7 @@ export default function Context({ children }) {
    await axios.get(`${baseUrl}/todo`)
       .then((res) => {
         if (res.data === "please login") {
-          return;
+          return null;
         }
         setTodos(res.data)
       }),
