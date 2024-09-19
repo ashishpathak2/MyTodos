@@ -28,9 +28,9 @@ export default function Context({ children }) {
   const getTodo = async () => {
    await axios.get(`${baseUrl}/todo`)
       .then((res) => {
-        // if (res.data === "please login") {
-        //   return;
-        // }
+        if (res.data === "please login") {
+          return;
+        }
         setTodos(res.data)
       }),
       (error) => {

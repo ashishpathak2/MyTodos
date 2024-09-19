@@ -24,8 +24,6 @@ const Addform = ({ }) => {
 
 
 
-
-
   const googleloggedUser = () => {
     axios.defaults.withCredentials = true;
     axios.get(`${baseUrl}/users/authUserName`).then((res) => {
