@@ -4,10 +4,13 @@ const usersModel = require("../collections/usersModel");
 const passport = require("passport")
 const passportLocal = require("passport-local");
 const googlePassport = require("passport-google-oauth20");
-const session = require('express-session');
+const otpGenerator = require('otp-generator')
+var nodemailer = require('nodemailer');
+var bcrypt = require('bcrypt');
 
 
-passport.use(new passportLocal(usersModel.authenticate()));
+
+passport.use(new passportLocal( usersModel.authenticate() ));
 
 
 passport.use(new googlePassport({
@@ -89,16 +92,10 @@ router.post("/register", async function (req, res) {
 
  
 
-  
-  
-  
-  
   router.post("/login",passport.authenticate("local"),function (req,res){
      res.send(req.session.passport.user.username)
     
   })
-
-
   
   router.get("/logout", function (req,res,next) {
     req.logout(function(err){
@@ -109,6 +106,85 @@ router.post("/register", async function (req, res) {
     res.status(200).send("logout");
   })
   
+
+
+ router.post("/forgetPassword",async function(req,res){
+   const email = await usersModel.findOne({email:req.body.email})
+    if (!email) {
+      return res.send("Invalid Email")
+    }
+    req.session.passwordResetUser = email
+    req.session.OTP = otpGenerator.generate(6, {lowerCaseAlphabets: false, upperCaseAlphabets: false, specialChars: false });
+    
+
+    var transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'pathak1420@gmail.com',
+        pass: "dbwpogwaxdpfaaso"
+      }
+    });
+    
+    var mailOptions = {
+      from: 'pathak1420@gmail.com',
+      to: req.body.email ,
+      subject: 'Password recovery mail from Mytodo ',
+      text: "OTP FOR PASSWORD RECOVERY: " + req.session.OTP 
+    };
+    
+    transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    });
+
+      res.send("success")
+
+
+})
+
+
+router.post("/otpVerification",function (req,res) {
+  if (req.session.OTP === req.body.otp) {
+    res.send("verified")
+  }
+})
+
+
+router.post("/resetPassword",async function (req,res) {
+
+
+  usersModel.findByUsername(req.session.passwordResetUser.username, (err, user) => {
+    if (err) {
+        console.log(err);
+    } else {
+        user.changePassword("123", 
+        req.body.password, function (err) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log("success");
+            }
+        });
+    }
+});
+
+
+
+
+  res.send("password Changed")
+  
+})
+
+
+
+
+
+
+
+
   
   //FUNCTION FOR PROTECTING ROUTES 
   function isLoggedIn(req,res,next){

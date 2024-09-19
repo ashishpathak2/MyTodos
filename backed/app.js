@@ -21,7 +21,8 @@ app.use(express.json());
 app.use(bodyParser.json());
 
 app.use(cors({
-  origin:["https://my-todos-1koj.vercel.app"],
+  // origin:["https://my-todos-1koj.vercel.app"],
+  origin:["http://localhost:5173"],
   methods:["GET","POST","DELETE","PUT","OPTIONS"],
   credentials:true
 }));
@@ -32,9 +33,10 @@ app.use(Session({
   saveUninitialized:false,
   secret:"heyashishhere",
   cookie:{
-    secure:true,
-    httpOnly: false,
-    sameSite:"none",
+    // secure:true,
+    secure:false,
+    // httpOnly: false,
+    // sameSite:"none",
     maxAge:24*60*60*1000,
   },
   // store:monogoStore.create({
