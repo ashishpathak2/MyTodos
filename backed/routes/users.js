@@ -92,10 +92,25 @@ router.post("/register", async function (req, res) {
 
  
 
-  router.post("/login",passport.authenticate("local"),function (req,res){
-     res.send(req.session.passport.user.username)
+  // router.post("/login",passport.authenticate("local"),function (req,res){
+  //    res.send(req.session.passport.user.username)
     
-  })
+  // })
+
+  router.post("/login", passport.authenticate("local", {
+    failureRedirect: "/login-failure", // Redirect on failure
+    successRedirect: "https://my-todos-1koj.vercel.app/",     // Redirect on success
+    // failureFlash: true
+  }), function (req, res) {
+    console.log(req.session.passport.user.username);
+    res.send(req.session.passport.user.username); 
+  });
+  
+  // Optional login failure route
+  router.get("/login-failure", (req, res) => {
+    res.send("Login failed. Incorrect username or password.");
+  });
+  
   
   router.get("/logout", function (req,res,next) {
     req.logout(function(err){
