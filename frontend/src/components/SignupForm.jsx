@@ -208,8 +208,9 @@ const Addform = ({ }) => {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
-
-                
+                { !formType &&
+                <a className='text-white text-opacity-70 text-sm mb-2' href="/forgetPassword">Forgot Password ?</a>
+                }
                   <button
                     type="submit"
                     className="bg-green-500 text-white py-2 px-6  min-w-[150px] rounded hover:scale-110 transition ease-in-out focus:outline-none focus:bg-zinc-200 focus:text-zinc-800"
