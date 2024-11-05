@@ -40,7 +40,7 @@ app.use(Session({
     maxAge:24*60*60*1000,
   },
   store:monogoStore.create({
-    mongoUrl:"mongodb+srv://pathak1420:PATHAK1420@cluster0.0qepf.mongodb.net/MyTodos?retryWrites=true&w=majority&appName=Cluster0",
+    mongoUrl:"mongodb+srv://pathak1420:pathak1420@cluster0.0qepf.mongodb.net/Mytodos?retryWrites=true&w=majority&appName=Cluster0",
     autoRemove: 'disabled',
     touchAfter: 24 * 3600 ,
 
